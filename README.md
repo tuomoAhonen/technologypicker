@@ -9,7 +9,7 @@ Plan is the create something simple. Our guidance was to do this in 3 weeks, but
 3. User should be able to pick if the project is for mobile or web.
 4. User should be able to pick programming language, if user wants to do so.
 5. User should be able to pick frameworks/technologies/tools, if user have something specific in mind.
-6. User should be able to pick if user needs to save data from users of the project or is the data just saved for the user, who uses the project (This will determine, if there is need for database or not).
+6. User should be able to pick if user needs to save data from users of the project or is the data just saved for the user, who uses the project. Is there need to save data from user or from the project owners. (This will determine, if there is need for database or not).
 7. If user picks database, then there should be question does user want to use services to save data or will there be own hosting related.
 8. After all of the questions user should get recommended options as lists and there should be the "best setup" as default option, but user could also swap from the lists, if user wants to customize something.
 9. User should be able to give new option for the options, that are recommended in the lists, if something is missing (This would be reviewed by the owner of technology picker/community). And to pick "other" option, if he chooses that, but there should be also warnings, that it might not be suitable for the technology mix.
