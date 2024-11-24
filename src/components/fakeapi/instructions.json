@@ -1,0 +1,142 @@
+{
+	"instructions": [
+		{
+			"instructions_id": 123,
+			"techstack": {
+				"frontend_framework": {
+					"frontend_id": 0,
+					"frontend_name": "NextJS",
+					"description": "NextJS has out of box support for Typescript, TailwindCSS an ESLint. So you can follow installation instructions of NextJS to turn those addons on.",
+					"programming_languages": ["JavaScript", "TypeScript"],
+					"platforms": ["Web", "MacOS", "Windows", "Linux"],
+					"install_url": "https://nextjs.org/docs/app/getting-started/installation",
+					"doc_url": "https://nextjs.org/docs",
+					"development_level": "Moderate to High",
+					"development_description": [
+						{
+							"topic": "Ease of Entry",
+							"text": [
+								"Moderate: Next.js is known for its great developer experience, and many developers find it relatively easy to get started, especially if they are already familiar with React.",
+								"The framework comes with built-in features like file-based routing, static generation (SSG), and server-side rendering (SSR) that abstract away much of the complexity. So, a beginner who knows JavaScript and React can quickly build simple static or dynamic websites."
+							]
+						},
+						{
+							"topic": "Advanced Features",
+							"text": [
+								"High: As you dive deeper into Next.js, the complexity increases. Advanced topics like API routes, serverless functions, image optimization, incremental static regeneration (ISR), and custom server configurations require a higher understanding of web development and server-side concepts.",
+								"To fully optimize and scale a Next.js app, familiarity with topics like custom webpack configurations, deployment strategies, and state management is beneficial."
+							]
+						},
+						{
+							"topic": "Learning Curve",
+							"text": [
+								"Moderate to High: For a developer already familiar with React, the learning curve is moderate, as Next.js builds on top of React with enhancements for SSR and SSG.",
+								"If you're new to concepts like server-side rendering, static site generation, and API routes, it will take a bit more time to understand and apply these concepts effectively."
+							]
+						},
+						{
+							"topic": "Integration with Other Technologies",
+							"text": [
+								"Moderate: Next.js works well with other tools and libraries, such as GraphQL, Prisma, Redux, TypeScript, etc. While integration with many of these tools is relatively straightforward, advanced features like custom server-side setups or middleware may require additional learning and experience."
+							]
+						}
+					]
+				},
+				"frontend_addons": [
+					{
+						"addon_id": 4,
+						"addon_name": "Formik",
+						"used_with": ["React", "NextJS", "Gatsby", "Remix", "React Native"],
+						"development_focus": "Frontend",
+						"install_url": "https://formik.org/docs/overview",
+						"doc_url": "https://formik.org/docs/overview"
+					},
+					{
+						"addon_id": 5,
+						"addon_name": "Zod",
+						"used_with": ["TypeScript", "NodeJS", "NextJS", "React", "Remix", "NestJS"],
+						"development_focus": "Frontend",
+						"install_url": "https://zod.dev/",
+						"doc_url": "https://zod.dev/"
+					},
+					{
+						"addon_id": 6,
+						"addon_name": "TailwindCSS",
+						"used_with": ["NextJS", "React", "VueJS", "Angular", "Svelte", "Gatsby", "NuxtJS", "Laravel", "Rails"],
+						"development_focus": "Frontend",
+						"install_url": "https://tailwindcss.com/docs/installation",
+						"doc_url": "https://tailwindcss.com/docs"
+					},
+					{
+						"addon_id": 18,
+						"addon_name": "Stripe",
+						"used_with": ["React", "NextJS", "NodeJS", "Gatsby"],
+						"development_focus": "Fullstack",
+						"install_url": "https://stripe.com/docs/stripe-js",
+						"doc_url": "https://stripe.com/docs"
+					},
+					{
+						"addon_id": 32,
+						"addon_name": "Node-postgres",
+						"used_with": [
+							"NodeJS",
+							"NextJS",
+							"Express",
+							"NestJS",
+							"Koa",
+							"Fastify",
+							"Sails",
+							"AdonisJS",
+							"Hapi",
+							"LoopBack",
+							"ActionHero"
+						],
+						"development_focus": "Fullstack",
+						"install_url": "https://node-postgres.com/",
+						"doc_url": "https://node-postgres.com/"
+					}
+				],
+				"databases": [
+					{
+						"database_id": 3,
+						"database_name": "PostgreSQL",
+						"install_url": "https://www.postgresql.org/download/",
+						"doc_url": "https://www.postgresql.org/docs/",
+						"development_level": "High",
+						"development_description": [
+							{
+								"topic": "Ease of Entry",
+								"text": [
+									"Moderate: PostgreSQL is user-friendly for developers familiar with SQL and relational databases.",
+									"It provides a robust set of features, but new users may need time to learn advanced concepts like indexing, schemas, and performance tuning."
+								]
+							},
+							{
+								"topic": "Advanced Features",
+								"text": [
+									"High: PostgreSQL offers advanced features like JSON support, full-text search, and powerful indexing capabilities.",
+									"It also supports complex queries and transactions, making it suitable for enterprise-grade applications."
+								]
+							},
+							{
+								"topic": "Learning Curve",
+								"text": [
+									"Moderate to High: Developers with experience in databases can quickly adapt to PostgreSQL, but understanding advanced optimization techniques and configurations takes time."
+								]
+							},
+							{
+								"topic": "Integration with Other Technologies",
+								"text": [
+									"High: PostgreSQL integrates seamlessly with various programming languages, ORMs, and frameworks like Node.js, Python (Django, Flask), and Java (Spring Boot).",
+									"Its versatility makes it a preferred choice for full-stack and microservices architectures."
+								]
+							}
+						]
+					}
+				],
+				"backend_framework": null,
+				"backend_addons": []
+			}
+		}
+	]
+}

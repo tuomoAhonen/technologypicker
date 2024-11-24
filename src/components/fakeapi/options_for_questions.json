@@ -1,0 +1,94 @@
+{
+	"topics": [
+		{
+			"topic_id": 0,
+			"topic_name": "Personal portfolio"
+		},
+		{
+			"topic_id": 1,
+			"topic_name": "Company's website"
+		},
+		{
+			"topic_id": 2,
+			"topic_name": "E-commerce"
+		},
+		{
+			"topic_id": 3,
+			"topic_name": "Wolt-app"
+		},
+		{
+			"topic_id": 4,
+			"topic_name": "Design"
+		},
+		{
+			"topic_id": 5,
+			"topic_name": "Web game"
+		},
+		{
+			"topic_id": 6,
+			"topic_name": "Non-web game"
+		},
+		{
+			"topic_id": 7,
+			"topic_name": "Other"
+		}
+	],
+	"platforms": [
+		{
+			"platform_id": 0,
+			"platform_name": "Mobile"
+		},
+		{
+			"platform_id": 1,
+			"platform_name": "Web"
+		},
+		{
+			"platform_id": 2,
+			"platform_name": "MacOS"
+		},
+		{
+			"platform_id": 3,
+			"platform_name": "Windows"
+		},
+		{
+			"platform_id": 4,
+			"platform_name": "Linux"
+		},
+		{
+			"platform_id": 5,
+			"platform_name": "Other"
+		}
+	],
+	"programming_languages_frontend": [
+		{"programming_language_id": 0, "programming_language_name": "Other"},
+		{"programming_language_id": 1, "programming_language_name": "JavaScript"},
+		{"programming_language_id": 2, "programming_language_name": "TypeScript"},
+		{"programming_language_id": 3, "programming_language_name": "Dart"}
+	],
+	"databaseTypes": [
+		{
+			"database_type_id": 0,
+			"database_type_name": "Database as service"
+		},
+		{
+			"database_type_id": 1,
+			"database_type_name": "Database as hosted on cloud"
+		},
+		{
+			"database_type_id": 2,
+			"database_type_name": "Database as self hosted"
+		},
+		{
+			"database_type_id": 3,
+			"database_type_name": "Database inside the app"
+		},
+		{
+			"database_type_id": 4,
+			"database_type_name": "No database"
+		},
+		{
+			"database_type_id": 5,
+			"database_type_name": "Other"
+		}
+	]
+}

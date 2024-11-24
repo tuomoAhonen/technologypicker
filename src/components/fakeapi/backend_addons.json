@@ -1,0 +1,399 @@
+{
+	"addons": [
+		{
+			"addon_id": 2,
+			"addon_name": "Strapi",
+			"used_with": [
+				"NextJS",
+				"React",
+				"VueJS",
+				"Angular",
+				"Gatsby",
+				"NuxtJS",
+				"Flutter",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": "PostgreSQL"
+		},
+		{
+			"addon_id": 3,
+			"addon_name": "Google API",
+			"used_with": [
+				"React",
+				"NextJS",
+				"NodeJS",
+				"Python",
+				"Java",
+				"Flutter",
+				"Go",
+				"PHP",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Fullstack",
+			"needed_with": ""
+		},
+		{
+			"addon_id": 5,
+			"addon_name": "Zod",
+			"used_with": [
+				"TypeScript",
+				"NodeJS",
+				"NextJS",
+				"React",
+				"Remix",
+				"NestJS",
+				"Express",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Fullstack",
+			"needed_with": ""
+		},
+		{
+			"addon_id": 17,
+			"addon_name": "GraphQL",
+			"used_with": [
+				"React",
+				"NextJS",
+				"Gatsby",
+				"VueJS",
+				"Angular",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": "PostgreSQL"
+		},
+		{
+			"addon_id": 18,
+			"addon_name": "Stripe",
+			"used_with": [
+				"React",
+				"NextJS",
+				"NodeJS",
+				"Gatsby",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Fullstack",
+			"needed_with": ""
+		},
+		{
+			"addon_id": 19,
+			"addon_name": "Twilio",
+			"used_with": [
+				"NodeJS",
+				"React",
+				"NextJS",
+				"VueJS",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": ""
+		},
+		{
+			"addon_id": 20,
+			"addon_name": "SendGrid",
+			"used_with": [
+				"NodeJS",
+				"React",
+				"NextJS",
+				"Gatsby",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": ""
+		},
+		{
+			"addon_id": 21,
+			"addon_name": "PayPal",
+			"used_with": [
+				"React",
+				"NextJS",
+				"NodeJS",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": ""
+		},
+		{
+			"addon_id": 22,
+			"addon_name": "Contentful",
+			"used_with": [
+				"React",
+				"NextJS",
+				"Gatsby",
+				"VueJS",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": ""
+		},
+		{
+			"addon_id": 23,
+			"addon_name": "Supabase Client",
+			"used_with": [
+				"React",
+				"NextJS",
+				"VueJS",
+				"NodeJS",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Fullstack",
+			"needed_with": "Supabase"
+		},
+		{
+			"addon_id": 24,
+			"addon_name": "Algolia",
+			"used_with": [
+				"React",
+				"NextJS",
+				"Gatsby",
+				"VueJS",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": ""
+		},
+		{
+			"addon_id": 25,
+			"addon_name": "Sequelize",
+			"used_with": [
+				"NodeJS",
+				"NextJS",
+				"React",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": "PostgreSQL"
+		},
+		{
+			"addon_id": 26,
+			"addon_name": "TypeORM",
+			"used_with": [
+				"NodeJS",
+				"NextJS",
+				"React",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": "PostgreSQL"
+		},
+		{
+			"addon_id": 27,
+			"addon_name": "Prisma",
+			"used_with": [
+				"NodeJS",
+				"NextJS",
+				"React",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": "PostgreSQL"
+		},
+		{
+			"addon_id": 28,
+			"addon_name": "Mongoose",
+			"used_with": [
+				"NodeJS",
+				"NextJS",
+				"React",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": "MongoDB"
+		},
+		{
+			"addon_id": 29,
+			"addon_name": "ObjectionJS",
+			"used_with": [
+				"NodeJS",
+				"NextJS",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": "PostgreSQL"
+		},
+		{
+			"addon_id": 30,
+			"addon_name": "Redis ODM",
+			"used_with": [
+				"NodeJS",
+				"NextJS",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": "Redis"
+		},
+		{
+			"addon_id": 31,
+			"addon_name": "Cassandra Driver",
+			"used_with": [
+				"NodeJS",
+				"NextJS",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": "Cassandra"
+		},
+		{
+			"addon_id": 32,
+			"addon_name": "Node-postgres",
+			"used_with": [
+				"NodeJS",
+				"NextJS",
+				"Express",
+				"NestJS",
+				"Koa",
+				"Fastify",
+				"Sails",
+				"AdonisJS",
+				"Hapi",
+				"LoopBack",
+				"ActionHero"
+			],
+			"development_focus": "Backend",
+			"needed_with": "PostgreSQL"
+		}
+	]
+}

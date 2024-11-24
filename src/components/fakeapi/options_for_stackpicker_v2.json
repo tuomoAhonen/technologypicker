@@ -1,0 +1,459 @@
+{
+	"frontends": [
+		{
+			"frontend_id": 0,
+			"frontend_name": "NextJS",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"platforms": ["Web", "MacOS", "Windows", "Linux"]
+		},
+		{
+			"frontend_id": 1,
+			"frontend_name": "React",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"platforms": ["Web", "MacOS", "Windows", "Linux"]
+		},
+		{
+			"frontend_id": 2,
+			"frontend_name": "React Native",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"platforms": ["Mobile"]
+		},
+		{
+			"frontend_id": 3,
+			"frontend_name": "NuxtJS",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"platforms": ["Web", "MacOS", "Windows", "Linux"]
+		},
+		{
+			"frontend_id": 4,
+			"frontend_name": "SvelteKit",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"platforms": ["Web", "MacOS", "Windows", "Linux"]
+		},
+		{
+			"frontend_id": 5,
+			"frontend_name": "Angular",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"platforms": ["Web", "MacOS", "Windows", "Linux"]
+		},
+		{
+			"frontend_id": 6,
+			"frontend_name": "VueJS",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"platforms": ["Web", "MacOS", "Windows", "Linux"]
+		},
+		{
+			"frontend_id": 7,
+			"frontend_name": "Svelte",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"platforms": ["Web", "MacOS", "Windows", "Linux"]
+		},
+		{
+			"frontend_id": 8,
+			"frontend_name": "Flutter",
+			"programming_languages": ["Dart"],
+			"platforms": ["Mobile", "MacOS", "Windows", "Linux"]
+		},
+		{
+			"frontend_id": 9,
+			"frontend_name": "ViteJSJS",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"platforms": ["Web", "MacOS", "Windows", "Linux"]
+		},
+		{
+			"frontend_id": 10,
+			"frontend_name": "Expo",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"platforms": ["Mobile", "Web"]
+		}
+	],
+	"backends": [
+		{
+			"backend_id": 0,
+			"backend_name": "NodeJS",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"performance_requirements": "High concurrency, low-latency responses",
+			"scalability_needs": "Horizontal scaling, ideal for handling large numbers of simultaneous connections",
+			"learning_curve": "Moderate - easy to start with but can get complex with large-scale applications"
+		},
+		{
+			"backend_id": 1,
+			"backend_name": "Express",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"performance_requirements": "Moderate concurrency, optimized for fast HTTP requests",
+			"scalability_needs": "Vertical scaling, suited for handling smaller to medium traffic loads",
+			"learning_curve": "Low - simple and minimalistic, great for beginners"
+		},
+		{
+			"backend_id": 2,
+			"backend_name": "NestJS",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"performance_requirements": "Scalable architecture, supports microservices",
+			"scalability_needs": "Horizontal scaling, designed for microservices and large-scale apps",
+			"learning_curve": "Moderate - based on TypeScript and Angular concepts, requires some learning"
+		},
+		{
+			"backend_id": 3,
+			"backend_name": "Fastify",
+			"programming_languages": ["JavaScript", "TypeScript"],
+			"performance_requirements": "Very high performance, optimized for low-latency",
+			"scalability_needs": "Horizontal scaling, optimized for both single and distributed systems",
+			"learning_curve": "Low to Moderate - similar to Express, but with more features and better performance"
+		},
+		{
+			"backend_id": 4,
+			"backend_name": "Django",
+			"programming_languages": ["Python"],
+			"performance_requirements": "Good for large-scale applications, moderate concurrency",
+			"scalability_needs": "Vertical and horizontal scaling, best for enterprise applications with high traffic",
+			"learning_curve": "Moderate - well-documented but can be complex for beginners"
+		},
+		{
+			"backend_id": 5,
+			"backend_name": "Flask",
+			"programming_languages": ["Python"],
+			"performance_requirements": "Lightweight, best for smaller applications with moderate traffic",
+			"scalability_needs": "Vertical scaling, suitable for simpler apps with moderate scaling needs",
+			"learning_curve": "Low - easy to learn and get started with, suitable for small projects"
+		},
+		{
+			"backend_id": 6,
+			"backend_name": "FastAPI",
+			"programming_languages": ["Python"],
+			"performance_requirements": "High performance for APIs, async support",
+			"scalability_needs": "Horizontal scaling, efficient in handling large-scale API traffic",
+			"learning_curve": "Moderate - intuitive and easy to learn for those familiar with Python"
+		},
+		{
+			"backend_id": 7,
+			"backend_name": "Spring Boot",
+			"programming_languages": ["Java"],
+			"performance_requirements": "High scalability, enterprise-level applications",
+			"scalability_needs": "Horizontal and vertical scaling, ideal for large enterprise systems",
+			"learning_curve": "High - Spring Boot requires familiarity with Java and the Spring ecosystem"
+		},
+		{
+			"backend_id": 8,
+			"backend_name": "Quarkus",
+			"programming_languages": ["Java"],
+			"performance_requirements": "Optimized for containerized environments, low memory usage",
+			"scalability_needs": "Horizontal scaling, designed for microservices and cloud-native applications",
+			"learning_curve": "Moderate - similar to Spring Boot but more focused on cloud-native and microservices"
+		},
+		{
+			"backend_id": 9,
+			"backend_name": "NET Core",
+			"programming_languages": ["C#"],
+			"performance_requirements": "High performance, suitable for cross-platform applications",
+			"scalability_needs": "Horizontal and vertical scaling, great for cross-platform apps in cloud environments",
+			"learning_curve": "Moderate - fairly easy for those familiar with C# or .NET ecosystem"
+		},
+		{
+			"backend_id": 10,
+			"backend_name": "ASP NET",
+			"programming_languages": ["C#"],
+			"performance_requirements": "Optimized for high-performance web applications",
+			"scalability_needs": "Horizontal scaling, suitable for high-traffic, large-scale web applications",
+			"learning_curve": "Moderate to High - requires knowledge of C# and ASP.NET ecosystem"
+		},
+		{
+			"backend_id": 11,
+			"backend_name": "CppCMS",
+			"programming_languages": ["C++"],
+			"performance_requirements": "Extremely high performance, low-latency for web apps",
+			"scalability_needs": "Horizontal scaling, suitable for highly concurrent applications",
+			"learning_curve": "High - requires advanced knowledge of C++ and low-level systems programming"
+		},
+		{
+			"backend_id": 12,
+			"backend_name": "Crow",
+			"programming_languages": ["C++"],
+			"performance_requirements": "High performance, optimized for web APIs",
+			"scalability_needs": "Vertical and horizontal scaling, best for performance-critical systems",
+			"learning_curve": "Moderate - simpler than CppCMS but still requires C++ expertise"
+		},
+		{
+			"backend_id": 13,
+			"backend_name": "Rocket",
+			"programming_languages": ["Rust"],
+			"performance_requirements": "High performance with memory safety and concurrency",
+			"scalability_needs": "Horizontal scaling, best for APIs and microservices",
+			"learning_curve": "Moderate - Rust's memory management model is challenging for new developers"
+		},
+		{
+			"backend_id": 14,
+			"backend_name": "Actix",
+			"programming_languages": ["Rust"],
+			"performance_requirements": "Exceptional speed and scalability for real-time applications",
+			"scalability_needs": "Horizontal scaling, great for handling concurrent requests in real-time systems",
+			"learning_curve": "High - Rust's ownership model and Actix’s actor model require deeper understanding"
+		},
+		{
+			"backend_id": 15,
+			"backend_name": "Gin",
+			"programming_languages": ["Go"],
+			"performance_requirements": "High performance and low-latency for API development",
+			"scalability_needs": "Horizontal scaling, ideal for building microservices and high-throughput applications",
+			"learning_curve": "Low - lightweight and easy to use with minimalistic design"
+		},
+		{
+			"backend_id": 16,
+			"backend_name": "Beego",
+			"programming_languages": ["Go"],
+			"performance_requirements": "Good for large-scale web applications and APIs",
+			"scalability_needs": "Horizontal scaling, suited for enterprise-level systems",
+			"learning_curve": "Moderate - provides more features and structure compared to Gin"
+		},
+		{
+			"backend_id": 17,
+			"backend_name": "Echo",
+			"programming_languages": ["Go"],
+			"performance_requirements": "High performance, optimized for REST APIs",
+			"scalability_needs": "Horizontal scaling, excellent for handling concurrent connections",
+			"learning_curve": "Low - straightforward and user-friendly for beginners"
+		},
+		{
+			"backend_id": 18,
+			"backend_name": "Fiber",
+			"programming_languages": ["Go"],
+			"performance_requirements": "Extremely fast and efficient, designed for high-performance APIs",
+			"scalability_needs": "Horizontal scaling, ideal for cloud-native and microservices architectures",
+			"learning_curve": "Low - inspired by Express.js, easy for those familiar with Node.js"
+		}
+	],
+	"programming_languages_backend": [
+		{"programming_language_id": 0, "programming_language_name": "Other"},
+		{"programming_language_id": 1, "programming_language_name": "JavaScript"},
+		{"programming_language_id": 2, "programming_language_name": "TypeScript"},
+		{"programming_language_id": 3, "programming_language_name": "Python"},
+		{"programming_language_id": 4, "programming_language_name": "Java"},
+		{"programming_language_id": 5, "programming_language_name": "Go"},
+		{"programming_language_id": 6, "programming_language_name": "Rust"},
+		{"programming_language_id": 7, "programming_language_name": "C++"},
+		{"programming_language_id": 8, "programming_language_name": "C#"},
+		{"programming_language_id": 9, "programming_language_name": "Ruby"},
+		{"programming_language_id": 10, "programming_language_name": "PHP"},
+		{"programming_language_id": 11, "programming_language_name": "Swift"},
+		{"programming_language_id": 12, "programming_language_name": "Kotlin"},
+		{"programming_language_id": 13, "programming_language_name": "Dart"},
+		{"programming_language_id": 14, "programming_language_name": "Shell"},
+		{"programming_language_id": 15, "programming_language_name": "R"},
+		{"programming_language_id": 16, "programming_language_name": "Scala"},
+		{"programming_language_id": 17, "programming_language_name": "Haskell"},
+		{"programming_language_id": 18, "programming_language_name": "Perl"},
+		{"programming_language_id": 19, "programming_language_name": "Lua"},
+		{"programming_language_id": 20, "programming_language_name": "Objective-C"},
+		{"programming_language_id": 21, "programming_language_name": "C"}
+	],
+	"databases": [
+		{"database_id": 0, "database_name": "Supabase", "database_type": "Service"},
+		{"database_id": 1, "database_name": "Neon", "database_type": "Service"},
+		{"database_id": 2, "database_name": "Firebase", "database_type": "Service"},
+		{"database_id": 3, "database_name": "PostgreSQL", "database_type": "SQL"},
+		{"database_id": 4, "database_name": "MySQL", "database_type": "SQL"},
+		{"database_id": 5, "database_name": "SQLite", "database_type": "SQL"},
+		{"database_id": 6, "database_name": "MongoDB", "database_type": "NoSQL"},
+		{"database_id": 7, "database_name": "Redis", "database_type": "NoSQL"},
+		{"database_id": 8, "database_name": "Cassandra", "database_type": "NoSQL"}
+	],
+	"addons": [
+		{
+			"addon_id": 0,
+			"addon_name": "Shadcn/ui",
+			"used_with": ["NextJS", "Remix", "React", "ViteJS", "Gatsby", "Expo"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 1,
+			"addon_name": "Storybook",
+			"used_with": ["React", "VueJS", "Angular", "Svelte", "HTML", "NextJS"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 2,
+			"addon_name": "Strapi",
+			"used_with": ["NextJS", "React", "VueJS", "Angular", "Gatsby", "NuxtJS", "Flutter"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 3,
+			"addon_name": "Google API",
+			"used_with": ["React", "NextJS", "NodeJS", "Python", "Java", "Flutter", "Go", "PHP"],
+			"development_focus": "Fullstack"
+		},
+		{
+			"addon_id": 4,
+			"addon_name": "Formik",
+			"used_with": ["React", "NextJS", "Gatsby", "Remix", "React Native"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 5,
+			"addon_name": "Zod",
+			"used_with": ["TypeScript", "NodeJS", "NextJS", "React", "Remix", "NestJS"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 6,
+			"addon_name": "TailwindCSS",
+			"used_with": ["NextJS", "React", "VueJS", "Angular", "Svelte", "Gatsby", "NuxtJS", "Laravel", "Rails"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 7,
+			"addon_name": "Redux",
+			"used_with": ["React", "NextJS", "Gatsby", "React Native", "Remix"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 8,
+			"addon_name": "Context API",
+			"used_with": ["React", "NextJS", "Gatsby", "React Native"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 9,
+			"addon_name": "Zustand",
+			"used_with": ["React", "NextJS", "Gatsby"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 10,
+			"addon_name": "Recoil",
+			"used_with": ["React", "NextJS"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 11,
+			"addon_name": "MobX",
+			"used_with": ["React", "NextJS", "Gatsby", "React Native"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 12,
+			"addon_name": "Pinia",
+			"used_with": ["Vue 3", "NuxtJS"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 13,
+			"addon_name": "Vuex",
+			"used_with": ["Vue 2", "Vue 3", "NuxtJS"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 14,
+			"addon_name": "NgRx",
+			"used_with": ["Angular"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 15,
+			"addon_name": "Apollo Client",
+			"used_with": ["React", "NextJS", "Gatsby", "Vue 3"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 16,
+			"addon_name": "Redux Toolkit",
+			"used_with": ["React", "NextJS", "Gatsby", "React Native"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 17,
+			"addon_name": "GraphQL",
+			"used_with": ["React", "NextJS", "Gatsby", "VueJS", "Angular"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 18,
+			"addon_name": "Stripe",
+			"used_with": ["React", "NextJS", "NodeJS", "Gatsby"],
+			"development_focus": "Fullstack"
+		},
+		{
+			"addon_id": 19,
+			"addon_name": "Twilio",
+			"used_with": ["NodeJS", "React", "NextJS", "VueJS"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 20,
+			"addon_name": "SendGrid",
+			"used_with": ["NodeJS", "React", "NextJS", "Gatsby"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 21,
+			"addon_name": "PayPal",
+			"used_with": ["React", "NextJS", "NodeJS"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 22,
+			"addon_name": "Contentful",
+			"used_with": ["React", "NextJS", "Gatsby", "VueJS"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 23,
+			"addon_name": "Supabase Client",
+			"used_with": ["React", "NextJS", "VueJS", "NodeJS"],
+			"development_focus": "Fullstack"
+		},
+		{
+			"addon_id": 24,
+			"addon_name": "Algolia",
+			"used_with": ["React", "NextJS", "Gatsby", "VueJS"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 25,
+			"addon_name": "Sequelize",
+			"used_with": ["NodeJS", "NextJS", "React"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 26,
+			"addon_name": "TypeORM",
+			"used_with": ["NodeJS", "NextJS", "React"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 27,
+			"addon_name": "Prisma",
+			"used_with": ["NodeJS", "NextJS", "React"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 28,
+			"addon_name": "Mongoose",
+			"used_with": ["NodeJS", "NextJS", "React"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 29,
+			"addon_name": "ObjectionJS",
+			"used_with": ["NodeJS", "NextJS"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 30,
+			"addon_name": "Redis ODM",
+			"used_with": ["NodeJS", "NextJS"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 31,
+			"addon_name": "Cassandra Driver",
+			"used_with": ["NodeJS", "NextJS"],
+			"development_focus": "Backend"
+		},
+		{
+			"addon_id": 32,
+			"addon_name": "Node-postgres",
+			"used_with": ["NodeJS", "NextJS"],
+			"development_focus": "Fullstack"
+		}
+	]
+}

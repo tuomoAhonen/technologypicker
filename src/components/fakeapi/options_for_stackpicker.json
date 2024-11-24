@@ -1,0 +1,442 @@
+{
+	"frontends": [
+		{
+			"frontend_id": 0,
+			"frontend_name": "NextJS",
+			"programming_languages": [
+				{"programming_language_id": 0, "programming_language_name": "JavaScript"},
+				{"programming_language_id": 1, "programming_language_name": "TypeScript"}
+			]
+		},
+		{
+			"frontend_id": 1,
+			"frontend_name": "React",
+			"programming_languages": [
+				{"programming_language_id": 0, "programming_language_name": "JavaScript"},
+				{"programming_language_id": 1, "programming_language_name": "TypeScript"}
+			]
+		},
+		{
+			"frontend_id": 2,
+			"frontend_name": "React_Native",
+			"programming_languages": [
+				{"programming_language_id": 0, "programming_language_name": "JavaScript"},
+				{"programming_language_id": 1, "programming_language_name": "TypeScript"}
+			]
+		},
+		{
+			"frontend_id": 3,
+			"frontend_name": "Nuxt",
+			"programming_languages": [
+				{"programming_language_id": 0, "programming_language_name": "JavaScript"},
+				{"programming_language_id": 1, "programming_language_name": "TypeScript"}
+			]
+		},
+		{
+			"frontend_id": 4,
+			"frontend_name": "SvelteKit",
+			"programming_languages": [
+				{"programming_language_id": 0, "programming_language_name": "JavaScript"},
+				{"programming_language_id": 1, "programming_language_name": "TypeScript"}
+			]
+		},
+		{
+			"frontend_id": 5,
+			"frontend_name": "Angular",
+			"programming_languages": [
+				{"programming_language_id": 0, "programming_language_name": "JavaScript"},
+				{"programming_language_id": 1, "programming_language_name": "TypeScript"}
+			]
+		},
+		{
+			"frontend_id": 6,
+			"frontend_name": "VueJS",
+			"programming_languages": [
+				{"programming_language_id": 0, "programming_language_name": "JavaScript"},
+				{"programming_language_id": 1, "programming_language_name": "TypeScript"}
+			]
+		},
+		{
+			"frontend_id": 7,
+			"frontend_name": "Svelte",
+			"programming_languages": [
+				{"programming_language_id": 0, "programming_language_name": "JavaScript"},
+				{"programming_language_id": 1, "programming_language_name": "TypeScript"}
+			]
+		},
+		{
+			"frontend_id": 8,
+			"frontend_name": "Flutter",
+			"programming_languages": [{"programming_language_id": 0, "programming_language_name": "Dart"}]
+		},
+		{
+			"frontend_id": 9,
+			"frontend_name": "ViteJS",
+			"programming_languages": [
+				{"programming_language_id": 0, "programming_language_name": "JavaScript"},
+				{"programming_language_id": 1, "programming_language_name": "TypeScript"}
+			]
+		},
+		{
+			"frontend_id": 10,
+			"frontend_name": "Expo",
+			"programming_languages": [
+				{"programming_language_id": 0, "programming_language_name": "JavaScript"},
+				{"programming_language_id": 1, "programming_language_name": "TypeScript"}
+			]
+		}
+	],
+	"backends": [
+		{"backend_id": 0, "backend_name": "NodeJS", "programming_language_name": "NodeJS"},
+		{"backend_id": 1, "backend_name": "Express", "programming_language_name": "NodeJS"},
+		{"backend_id": 2, "backend_name": "NestJS", "programming_language_name": "NodeJS"},
+		{"backend_id": 3, "backend_name": "Fastify", "programming_language_name": "NodeJS"},
+		{"backend_id": 4, "backend_name": "Django", "programming_language_name": "Python"},
+		{"backend_id": 5, "backend_name": "Flask", "programming_language_name": "Python"},
+		{"backend_id": 6, "backend_name": "FastAPI", "programming_language_name": "Python"},
+		{"backend_id": 7, "backend_name": "Spring Boot", "programming_language_name": "Java"},
+		{"backend_id": 8, "backend_name": "Quarkus", "programming_language_name": "Java"},
+		{"backend_id": 9, "backend_name": "NET Core", "programming_language_name": "C#"},
+		{"backend_id": 10, "backend_name": "ASP NET", "programming_language_name": "C#"}
+	],
+	"databases": [
+		{"database_id": 0, "database_name": "Supabase", "database_type": "Service"},
+		{"database_id": 1, "database_name": "Neon", "database_type": "Service"},
+		{"database_id": 2, "database_name": "Firebase", "database_type": "Service"},
+		{"database_id": 3, "database_name": "PostgreSQL", "database_type": "SQL"},
+		{"database_id": 4, "database_name": "MySQL", "database_type": "SQL"},
+		{"database_id": 5, "database_name": "SQLite", "database_type": "SQL"},
+		{"database_id": 6, "database_name": "MongoDB", "database_type": "NoSQL"},
+		{"database_id": 7, "database_name": "Redis", "database_type": "NoSQL"},
+		{"database_id": 8, "database_name": "Cassandra", "database_type": "NoSQL"}
+	],
+	"addons": [
+		{
+			"addon_id": 0,
+			"addon_name": "Shadcn/ui",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Next.js"},
+				{"tech_id": 1, "tech_name": "Remix"},
+				{"tech_id": 2, "tech_name": "Create React App"},
+				{"tech_id": 3, "tech_name": "Vite"},
+				{"tech_id": 4, "tech_name": "Gatsby"},
+				{"tech_id": 5, "tech_name": "Expo"}
+			]
+		},
+		{
+			"addon_id": 1,
+			"addon_name": "Storybook",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Vue.js"},
+				{"tech_id": 2, "tech_name": "Angular"},
+				{"tech_id": 3, "tech_name": "Svelte"},
+				{"tech_id": 4, "tech_name": "HTML"},
+				{"tech_id": 5, "tech_name": "Next.js"}
+			]
+		},
+		{
+			"addon_id": 2,
+			"addon_name": "Strapi",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Next.js"},
+				{"tech_id": 1, "tech_name": "React"},
+				{"tech_id": 2, "tech_name": "Vue.js"},
+				{"tech_id": 3, "tech_name": "Angular"},
+				{"tech_id": 4, "tech_name": "Gatsby"},
+				{"tech_id": 5, "tech_name": "Nuxt.js"},
+				{"tech_id": 6, "tech_name": "Flutter"}
+			]
+		},
+		{
+			"addon_id": 3,
+			"addon_name": "Google API",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Node.js"},
+				{"tech_id": 3, "tech_name": "Python"},
+				{"tech_id": 4, "tech_name": "Java"},
+				{"tech_id": 5, "tech_name": "Flutter"},
+				{"tech_id": 6, "tech_name": "Go"},
+				{"tech_id": 7, "tech_name": "PHP"}
+			]
+		},
+		{
+			"addon_id": 4,
+			"addon_name": "Formik",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Gatsby"},
+				{"tech_id": 3, "tech_name": "Remix"},
+				{"tech_id": 4, "tech_name": "React Native"}
+			]
+		},
+		{
+			"addon_id": 5,
+			"addon_name": "Zod",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "TypeScript"},
+				{"tech_id": 1, "tech_name": "Node.js"},
+				{"tech_id": 2, "tech_name": "Next.js"},
+				{"tech_id": 3, "tech_name": "React"},
+				{"tech_id": 4, "tech_name": "Remix"},
+				{"tech_id": 5, "tech_name": "NestJS"}
+			]
+		},
+		{
+			"addon_id": 6,
+			"addon_name": "TailwindCSS",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Next.js"},
+				{"tech_id": 1, "tech_name": "React"},
+				{"tech_id": 2, "tech_name": "Vue.js"},
+				{"tech_id": 3, "tech_name": "Angular"},
+				{"tech_id": 4, "tech_name": "Svelte"},
+				{"tech_id": 5, "tech_name": "Gatsby"},
+				{"tech_id": 6, "tech_name": "Nuxt.js"},
+				{"tech_id": 7, "tech_name": "Laravel"},
+				{"tech_id": 8, "tech_name": "Rails"}
+			]
+		},
+		{
+			"addon_id": 7,
+			"addon_name": "Redux",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Gatsby"},
+				{"tech_id": 3, "tech_name": "React Native"},
+				{"tech_id": 4, "tech_name": "Remix"}
+			]
+		},
+		{
+			"addon_id": 8,
+			"addon_name": "Context API",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Gatsby"},
+				{"tech_id": 3, "tech_name": "React Native"}
+			]
+		},
+		{
+			"addon_id": 9,
+			"addon_name": "Zustand",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Gatsby"}
+			]
+		},
+		{
+			"addon_id": 10,
+			"addon_name": "Recoil",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"}
+			]
+		},
+		{
+			"addon_id": 11,
+			"addon_name": "MobX",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Gatsby"},
+				{"tech_id": 3, "tech_name": "React Native"}
+			]
+		},
+		{
+			"addon_id": 12,
+			"addon_name": "Pinia",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Vue 3"},
+				{"tech_id": 1, "tech_name": "Nuxt.js"}
+			]
+		},
+		{
+			"addon_id": 13,
+			"addon_name": "Vuex",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Vue 2"},
+				{"tech_id": 1, "tech_name": "Vue 3"},
+				{"tech_id": 2, "tech_name": "Nuxt.js"}
+			]
+		},
+		{
+			"addon_id": 14,
+			"addon_name": "NgRx",
+			"used_with": [{"tech_id": 0, "tech_name": "Angular"}]
+		},
+		{
+			"addon_id": 15,
+			"addon_name": "Apollo Client",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Gatsby"},
+				{"tech_id": 3, "tech_name": "Vue 3"}
+			]
+		},
+		{
+			"addon_id": 16,
+			"addon_name": "Redux Toolkit",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Gatsby"},
+				{"tech_id": 3, "tech_name": "React Native"}
+			]
+		},
+		{
+			"addon_id": 17,
+			"addon_name": "GraphQL",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Gatsby"},
+				{"tech_id": 3, "tech_name": "Vue.js"},
+				{"tech_id": 4, "tech_name": "Angular"}
+			]
+		},
+		{
+			"addon_id": 18,
+			"addon_name": "Stripe",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Node.js"},
+				{"tech_id": 3, "tech_name": "Gatsby"}
+			]
+		},
+		{
+			"addon_id": 19,
+			"addon_name": "Twilio",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Node.js"},
+				{"tech_id": 1, "tech_name": "React"},
+				{"tech_id": 2, "tech_name": "Next.js"},
+				{"tech_id": 3, "tech_name": "Vue.js"}
+			]
+		},
+		{
+			"addon_id": 20,
+			"addon_name": "SendGrid",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Node.js"},
+				{"tech_id": 1, "tech_name": "React"},
+				{"tech_id": 2, "tech_name": "Next.js"},
+				{"tech_id": 3, "tech_name": "Gatsby"}
+			]
+		},
+		{
+			"addon_id": 21,
+			"addon_name": "PayPal",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Node.js"}
+			]
+		},
+		{
+			"addon_id": 22,
+			"addon_name": "Contentful",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Gatsby"},
+				{"tech_id": 3, "tech_name": "Vue.js"}
+			]
+		},
+		{
+			"addon_id": 23,
+			"addon_name": "Supabase Client",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Vue.js"},
+				{"tech_id": 3, "tech_name": "Node.js"}
+			]
+		},
+		{
+			"addon_id": 24,
+			"addon_name": "Algolia",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "React"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "Gatsby"},
+				{"tech_id": 3, "tech_name": "Vue.js"}
+			]
+		},
+		{
+			"addon_id": 25,
+			"addon_name": "Sequelize",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Node.js"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "React"}
+			]
+		},
+		{
+			"addon_id": 26,
+			"addon_name": "TypeORM",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Node.js"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "React"}
+			]
+		},
+		{
+			"addon_id": 27,
+			"addon_name": "Prisma",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Node.js"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "React"}
+			]
+		},
+		{
+			"addon_id": 28,
+			"addon_name": "Mongoose",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Node.js"},
+				{"tech_id": 1, "tech_name": "Next.js"},
+				{"tech_id": 2, "tech_name": "React"}
+			]
+		},
+		{
+			"addon_id": 29,
+			"addon_name": "Objection.js",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Node.js"},
+				{"tech_id": 1, "tech_name": "Next.js"}
+			]
+		},
+		{
+			"addon_id": 30,
+			"addon_name": "Redis ODM",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Node.js"},
+				{"tech_id": 1, "tech_name": "Next.js"}
+			]
+		},
+		{
+			"addon_id": 31,
+			"addon_name": "Cassandra Driver",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Node.js"},
+				{"tech_id": 1, "tech_name": "Next.js"}
+			]
+		},
+		{
+			"addon_id": 32,
+			"addon_name": "node-postgres",
+			"used_with": [
+				{"tech_id": 0, "tech_name": "Node.js"},
+				{"tech_id": 1, "tech_name": "Next.js"}
+			]
+		}
+	]
+}
