@@ -27,7 +27,7 @@ import {
 const initializer = {
 	topic: {topic_id: null, topic_name: null},
 	target_device: {platform_id: null, platform_name: null},
-	programming_language: {programming_language_id: null, programming_language_name: null},
+	//programming_language: {programming_language_id: null, programming_language_name: null},
 	//addons: [],
 	databaseTypes: [],
 	//{database_type_id: null, database_type_name: null},
@@ -61,7 +61,7 @@ function stackReducer(state: any, action: {payload: any; type: string}) {
 					platform_name: null,
 				},
 			};
-		case 'setProgrammingLanguage':
+		/*case 'setProgrammingLanguage':
 			return {
 				...state,
 				programming_language: {
@@ -73,7 +73,7 @@ function stackReducer(state: any, action: {payload: any; type: string}) {
 			return {
 				...state,
 				programming_language: {programming_language_id: null, programming_language_name: null},
-			};
+			};*/
 		/*case 'setAddons':
 			return {
 				...state,
@@ -133,7 +133,7 @@ export default function Questions() {
 	const [stackReducerValue, stackReducerDispatcher] = useReducer(stackReducer, initializer);
 	const [chosenStack, setChosenStack] = useState<object>({stack_id: null});
 	const [questionShown, setQuestionShown] = useState<number>(1);
-	const [questionCount, setQuestionCount] = useState<number>(4);
+	const [questionCount, setQuestionCount] = useState<number>(3);
 	const [user, setUser] = useState({user_id: null, user_email: null, username: null});
 	const [currentAnswers, setCurrentAnswers] = useState<any>('');
 	const route = useRouter();
@@ -170,7 +170,7 @@ export default function Questions() {
 				) : (
 					<div className='flex flex-row gap-1 border rounded w-fit p-1'>{`2. - `}</div>
 				)}
-				{stackReducerValue.programming_language.programming_language_name ? (
+				{/*stackReducerValue.programming_language.programming_language_name ? (
 					<div
 						key={
 							stackReducerValue.programming_language.programming_language_id +
@@ -185,7 +185,7 @@ export default function Questions() {
 					</div>
 				) : (
 					<div className='flex flex-row gap-1 border rounded w-fit p-1'>{`3. - `}</div>
-				)}
+				)*/}
 				{/*stackReducerValue.addons.length > 0 ? (
 					<div className='flex flex-row gap-1 border rounded w-fit p-1 text-center'>
 						<div className='text-center content-center'>{`4.`}</div>
@@ -205,7 +205,7 @@ export default function Questions() {
 				)*/}
 				{stackReducerValue.databaseTypes.length > 0 ? (
 					<div className='flex flex-row gap-1 border rounded w-fit p-1 text-center'>
-						<div className='text-center content-center'>{`4.`}</div>
+						<div className='text-center content-center'>{`3.`}</div>
 						{stackReducerValue.databaseTypes.map((dbtypes: {database_type_id: number; database_type_name: string}) => (
 							<div
 								key={dbtypes.database_type_id + '-' + dbtypes.database_type_name}
@@ -223,7 +223,7 @@ export default function Questions() {
 						))}
 					</div>
 				) : (
-					<div className='flex flex-row gap-1 border rounded w-fit p-1'>{`4. - `}</div>
+					<div className='flex flex-row gap-1 border rounded w-fit p-1'>{`3. - `}</div>
 				)}
 			</div>
 		);
@@ -245,6 +245,12 @@ export default function Questions() {
 						.map((addon: {addon_id: number; addon_name: string}) => addon.addon_name)
 						.join('&addons=')
 				: '-'
+
+		&programming_language=${
+													stackReducerValue.programming_language.programming_language_name
+														? stackReducerValue.programming_language.programming_language_name
+														: '-'
+												}
 	*/
 
 	return (
@@ -283,10 +289,6 @@ export default function Questions() {
 													stackReducerValue.target_device.platform_name
 														? stackReducerValue.target_device.platform_name
 														: '-'
-												}&programming_language=${
-													stackReducerValue.programming_language.programming_language_name
-														? stackReducerValue.programming_language.programming_language_name
-														: '-'
 												}&database_types=${
 													stackReducerValue.databaseTypes.length > 0
 														? stackReducerValue.databaseTypes
@@ -324,28 +326,32 @@ export default function Questions() {
 			</div>
 			<div className='font-bold text-lg'>{`Question number ${questionShown} out of ${questionCount}`}</div>
 
-			{questionShown === 1 ? (
-				<QuestionNumberOne currentDispatcherValue={stackReducerValue.topic} dispatcher={stackReducerDispatcher} />
-			) : questionShown === 2 ? (
-				<QuestionNumberTwo
-					currentDispatcherValue={stackReducerValue.target_device}
-					dispatcher={stackReducerDispatcher}
-				/>
-			) : questionShown === 3 ? (
-				<QuestionNumberThree
+			{
+				questionShown === 1 ? (
+					<QuestionNumberOne currentDispatcherValue={stackReducerValue.topic} dispatcher={stackReducerDispatcher} />
+				) : questionShown === 2 ? (
+					<QuestionNumberTwo
+						currentDispatcherValue={stackReducerValue.target_device}
+						dispatcher={stackReducerDispatcher}
+					/>
+				) : questionShown === 3 ? (
+					<QuestionNumberThree
+						currentDispatcherValue={stackReducerValue.databaseTypes}
+						dispatcher={stackReducerDispatcher}
+					/>
+				) : null
+				/*<QuestionNumberThree
 					currentDispatcherValue={stackReducerValue.programming_language}
 					dispatcher={stackReducerDispatcher}
-				/> /*: questionShown === 4 ? (
+				/> : questionShown === 4 ? (
 				<QuestionNumberFour
 					currentDispatcherValue={stackReducerValue.addons}
 					dispatcher={stackReducerDispatcher}
-				/>*/
-			) : questionShown === 4 ? (
-				<QuestionNumberFour
-					currentDispatcherValue={stackReducerValue.databaseTypes}
-					dispatcher={stackReducerDispatcher}
 				/>
-			) : null}
+			) : questionShown === 4 ? (
+				
+			)*/
+			}
 		</div>
 	);
 }
@@ -710,7 +716,7 @@ function QuestionNumberTwo({currentDispatcherValue, dispatcher}: {currentDispatc
 	);
 }
 
-function QuestionNumberThree({currentDispatcherValue, dispatcher}: {currentDispatcherValue: any; dispatcher: any}) {
+/*function QuestionNumberThree({currentDispatcherValue, dispatcher}: {currentDispatcherValue: any; dispatcher: any}) {
 	const [open, setOpen] = useState<boolean>(false);
 	const [value, setValue] = useState<undefined | number>(undefined);
 	const [showInput, setShowInput] = useState<boolean>(false);
@@ -751,33 +757,33 @@ function QuestionNumberThree({currentDispatcherValue, dispatcher}: {currentDispa
 		},
 	];
 
-	/*useEffect(() => {
-		if (
-			(value || value === 0) &&
-			value !== currentDispatcherValue.programming_language_id &&
-			programmingLanguages[value].programming_language_name !== 'Other'
-		) {
-			return dispatcher({payload: programmingLanguages[value], type: 'setProgrammingLanguage'});
-		}
-	}, [value]);
+	//useEffect(() => {
+	//	if (
+	//		(value || value === 0) &&
+	//		value !== currentDispatcherValue.programming_language_id &&
+	//		programmingLanguages[value].programming_language_name !== 'Other'
+	//	) {
+	//		return dispatcher({payload: programmingLanguages[value], type: 'setProgrammingLanguage'});
+	//	}
+	//}, [value]);
 
-	useEffect(() => {
-		if (
-			(currentDispatcherValue?.programming_language_id || currentDispatcherValue.programming_language_id === 0) &&
-			currentDispatcherValue.programming_language_id !== value
-		) {
-			//console.log('setValue', currentDispatcherValue.programming_language_id);
-			if (
-				programmingLanguages.find((pl) => pl.programming_language_id === currentDispatcherValue.programming_language_id)
-			) {
-				return setValue(currentDispatcherValue.programming_language_id);
-			}
-
-			return setValue(7);
-		}
-
-		return setValue(undefined);
-	}, [currentDispatcherValue]);*/
+	//useEffect(() => {
+	//	if (
+	//		(currentDispatcherValue?.programming_language_id || currentDispatcherValue.programming_language_id === 0) &&
+	//		currentDispatcherValue.programming_language_id !== value
+	//	) {
+	//		//console.log('setValue', currentDispatcherValue.programming_language_id);
+	//		if (
+	//			programmingLanguages.find((pl) => pl.programming_language_id === currentDispatcherValue.programming_language_id)
+	//		) {
+	//			return setValue(currentDispatcherValue.programming_language_id);
+	//		}
+	//
+	//		return setValue(7);
+	//	}
+	//
+	//	return setValue(undefined);
+	//}, [currentDispatcherValue]);
 
 	//console.log(value, currentDispatcherValue);
 
@@ -870,7 +876,7 @@ function QuestionNumberThree({currentDispatcherValue, dispatcher}: {currentDispa
 			</div>
 		</>
 	);
-}
+}*/
 
 /*function QuestionNumberFour({currentDispatcherValue, dispatcher}: {currentDispatcherValue: any[]; dispatcher: any}) {
 	const [open, setOpen] = useState<boolean>(false);
@@ -1068,7 +1074,7 @@ function QuestionNumberThree({currentDispatcherValue, dispatcher}: {currentDispa
 	);
 }*/
 
-function QuestionNumberFour({currentDispatcherValue, dispatcher}: {currentDispatcherValue: any[]; dispatcher: any}) {
+function QuestionNumberThree({currentDispatcherValue, dispatcher}: {currentDispatcherValue: any[]; dispatcher: any}) {
 	const [open, setOpen] = useState<boolean>(false);
 	const [value, setValue] = useState<string>('');
 	const [showInput, setShowInput] = useState<boolean>(false);

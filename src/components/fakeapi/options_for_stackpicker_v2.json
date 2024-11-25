@@ -1,4 +1,10 @@
 {
+	"programming_languages_frontend": [
+		{"programming_language_id": 0, "programming_language_name": "Other"},
+		{"programming_language_id": 1, "programming_language_name": "JavaScript"},
+		{"programming_language_id": 2, "programming_language_name": "TypeScript"},
+		{"programming_language_id": 3, "programming_language_name": "Dart"}
+	],
 	"frontends": [
 		{
 			"frontend_id": 0,
@@ -52,11 +58,11 @@
 			"frontend_id": 8,
 			"frontend_name": "Flutter",
 			"programming_languages": ["Dart"],
-			"platforms": ["Mobile", "MacOS", "Windows", "Linux"]
+			"platforms": ["Mobile", "MacOS", "Windows", "Linux", "Web"]
 		},
 		{
 			"frontend_id": 9,
-			"frontend_name": "ViteJSJS",
+			"frontend_name": "ViteJS",
 			"programming_languages": ["JavaScript", "TypeScript"],
 			"platforms": ["Web", "MacOS", "Windows", "Linux"]
 		},
