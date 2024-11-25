@@ -12,8 +12,11 @@ import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover';
 
 import fakeApi from '@/components/fakeapi/options_for_stackpicker_v2.json';
 import fakeApiBackendAddons from '@/components/fakeApi/backend_addons.json';
+import {useToast} from '@/hooks/use-toast';
+import ButtonComponent from './buttonComponent';
 
 export default function StackPickerComponent() {
+	const [showAllPicks, setShowAllPicks] = useState<boolean>(false);
 	const [forceBackend, setForceBackend] = useState<boolean>(false);
 	const [filters, setFilters] = useState<any>({
 		topic: null,
@@ -30,6 +33,7 @@ export default function StackPickerComponent() {
 		backend_framework: null,
 		backend_addons: [],
 	});
+	const [previousFrontendFramework, setPreviousFrontendFramework] = useState<any>(null);
 	const searchParams = useSearchParams();
 	const router = useRouter();
 
@@ -48,10 +52,115 @@ export default function StackPickerComponent() {
 		});
 	}, [searchParams]);
 
+	useEffect(() => {
+		if (!pickedOptions.frontend_language) {
+			return setPickedOptions({
+				frontend_language: null,
+				frontend_framework: null,
+				frontend_addons: [],
+				databases: [],
+				backend_language: null,
+				backend_framework: null,
+				backend_addons: [],
+			});
+		}
+	}, [pickedOptions.frontend_language]);
+
+	useEffect(() => {
+		//console.log(previousFrontendFramework.framework_name, pickedOptions.frontend_framework.framework_name);
+		if (!pickedOptions.frontend_framework) {
+			return setPickedOptions((prev: any) => ({
+				frontend_language: prev.frontend_language,
+				frontend_framework: null,
+				frontend_addons: [],
+				databases: [],
+				backend_language: null,
+				backend_framework: null,
+				backend_addons: [],
+			}));
+		} else if (
+			pickedOptions.frontend_framework &&
+			previousFrontendFramework &&
+			(previousFrontendFramework.framework_name !== 'NextJS' ||
+				previousFrontendFramework.framework_name !== 'NuxtJS') &&
+			(pickedOptions.frontend_framework.framework_name === 'NextJS' ||
+				pickedOptions.frontend_framework.framework_name === 'NuxtJS')
+		) {
+			return setPickedOptions((prev: any) => ({
+				frontend_language: prev.frontend_language,
+				frontend_framework: prev.frontend_framework,
+				frontend_addons: [],
+				databases: prev.databases,
+				backend_language: null,
+				backend_framework: null,
+				backend_addons: [],
+			}));
+		} else if (
+			pickedOptions.frontend_framework &&
+			previousFrontendFramework &&
+			(previousFrontendFramework.framework_name === 'NextJS' ||
+				previousFrontendFramework.framework_name === 'NuxtJS') &&
+			(pickedOptions.frontend_framework.framework_name !== 'NextJS' ||
+				pickedOptions.frontend_framework.framework_name !== 'NuxtJS')
+		) {
+			return setPickedOptions((prev: any) => ({
+				frontend_language: prev.frontend_language,
+				frontend_framework: prev.frontend_framework,
+				frontend_addons: [],
+				databases: prev.databases,
+				backend_language: null,
+				backend_framework: null,
+				backend_addons: [],
+			}));
+		}
+	}, [pickedOptions.frontend_framework]);
+
+	useEffect(() => {
+		if (pickedOptions.databases.length === 0) {
+			return setPickedOptions((prev: any) => ({
+				frontend_language: prev.frontend_language,
+				frontend_framework: prev.frontend_framework,
+				frontend_addons: prev.frontend_addons,
+				databases: prev.databases,
+				backend_language: null,
+				backend_framework: null,
+				backend_addons: [],
+			}));
+		}
+	}, [pickedOptions.databases]);
+
+	useEffect(() => {
+		if (!pickedOptions.backend_language) {
+			return setPickedOptions((prev: any) => ({
+				frontend_language: prev.frontend_language,
+				frontend_framework: prev.frontend_framework,
+				frontend_addons: prev.frontend_addons,
+				databases: prev.databases,
+				backend_language: null,
+				backend_framework: null,
+				backend_addons: [],
+			}));
+		}
+	}, [pickedOptions.backend_language]);
+
+	useEffect(() => {
+		if (!pickedOptions.backend_framework) {
+			return setPickedOptions((prev: any) => ({
+				frontend_language: prev.frontend_language,
+				frontend_framework: prev.frontend_framework,
+				frontend_addons: prev.frontend_addons,
+				databases: prev.databases,
+				backend_language: prev.backend_language,
+				backend_framework: null,
+				backend_addons: [],
+			}));
+		}
+	}, [pickedOptions.backend_framework]);
+
 	const stackAnswers = () => {
 		return (
-			<div className='flex flex-row gap-1 justify-start items-center content-center text-center flex-wrap bg-black rounded shadow text-white p-1'>
-				<div>Answers:</div>
+			<div className='w-full flex flex-row gap-1 justify-start items-center content-center text-center flex-wrap bg-black rounded shadow text-white p-1 h-fit'>
+				<div>Answers as filters:</div>
 				{filters.topic ? (
 					<div
 						onClick={() => setFilters((prev: any) => ({...prev, topic: null}))}
@@ -115,12 +224,48 @@ export default function StackPickerComponent() {
 	//console.log(filters);
 	//console.log(pickedOptions.databases);
 	//console.log(pickedOptions.backend_language);
-	console.log(pickedOptions.frontend_language);
+	//console.log(pickedOptions.frontend_language);
+	/* <div
+					className={
+						!showAllPicks
+							? 'flex flex-row gap-1 justify-start items-center text-center flex-wrap w-full p-1 overflow-hidden h-12'
+							: 'flex flex-row gap-1 justify-start items-center text-center flex-wrap w-full p-1 overflow-visible h-fit'
+					}
+				>
+
+					</div>
+				<Button
+					onClick={() =>
+						setShowAllPicks(
+							!showAllPicks &&
+								JSON.stringify(pickedOptions) !==
+									JSON.stringify({
+										frontend_language: null,
+										frontend_framework: null,
+										frontend_addons: [],
+										databases: [],
+										backend_language: null,
+										backend_framework: null,
+										backend_addons: [],
+									})
+								? true
+								: false
+						)
+					}
+					className='w-24 justify-self-end mt-2'
+				>
+					{!showAllPicks ? 'Show all' : 'Hide all'}
+				</Button>
+	*/
 
 	return (
-		<div className='flex flex-col gap-1'>
+		<div className='w-full flex flex-col gap-1'>
+			<div className='flex flex-row gap-5 justify-self-end w-fit h-fit ml-auto'>
+				<ButtonComponent />
+				<Button onClick={() => router.push('/instructions/123')}>Check your results</Button>
+			</div>
 			{stackAnswers()}
-			<div className='flex flex-row gap-1 justify-start items-center content-center text-center flex-wrap bg-black rounded shadow text-white p-1'>
+			<div className='w-full flex flex-row gap-1 justify-start items-center text-center flex-wrap bg-black rounded shadow text-white p-1 h-fit'>
 				<div>Picked stack options:</div>
 				{pickedOptions.frontend_language && pickedOptions.frontend_language.programming_language_name ? (
 					<div
@@ -165,7 +310,7 @@ export default function StackPickerComponent() {
 						<div>{`Databases:`}</div>
 						{pickedOptions.databases.map((db: any) => (
 							<div
-								key={`${db.database_id}-${db.database_name}`}
+								key={`${db.database_id}-${db.database_name}-dbs`}
 								onClick={() =>
 									setPickedOptions((prev: any) => ({
 										...prev,
@@ -237,6 +382,7 @@ export default function StackPickerComponent() {
 						}
 						platform={filters.platform}
 						topic={filters.topic}
+						setPreviousFrontendFramework={setPreviousFrontendFramework}
 					/>
 				</div>
 				<div
@@ -249,6 +395,7 @@ export default function StackPickerComponent() {
 					<PickFrontendAddons
 						pickedFrontendFramework={pickedOptions.frontend_framework}
 						setPickedOptions={setPickedOptions}
+						currentAddons={pickedOptions.frontend_addons}
 					/>
 				</div>
 				<div
@@ -260,7 +407,11 @@ export default function StackPickerComponent() {
 							: 'flex flex-col gap-1 pointer-events-none opacity-25'
 					}
 				>
-					<PickDatabases setPickedOptions={setPickedOptions} database_types={filters.database_types} />
+					<PickDatabases
+						setPickedOptions={setPickedOptions}
+						database_types={filters.database_types}
+						currentDatabases={pickedOptions.databases}
+					/>
 				</div>
 				<div
 					className={
@@ -272,26 +423,6 @@ export default function StackPickerComponent() {
 					}
 				>
 					<div>5th. Pick programming language for backend</div>
-					<Button
-						onClick={() => {
-							setForceBackend(!forceBackend ? true : false);
-							setPickedOptions((prev: any) => ({
-								...prev,
-								backend_language: null,
-								backend_framework: null,
-								backend_addons: [],
-							}));
-						}}
-						className={
-							pickedOptions.frontend_framework &&
-							(pickedOptions.frontend_framework?.framework_name === 'NextJS' ||
-								pickedOptions.frontend_framework?.framework_name === 'NuxtJS')
-								? ''
-								: 'pointer-events-none opacity-25'
-						}
-					>
-						{!forceBackend ? 'Force enable backend' : 'Disable backend force'}
-					</Button>
 					<div
 						className={
 							pickedOptions.frontend_framework &&
@@ -312,6 +443,26 @@ export default function StackPickerComponent() {
 					>
 						<PickBackendLanguage setPickedOptions={setPickedOptions} />
 					</div>
+					<Button
+						onClick={() => {
+							setForceBackend(!forceBackend ? true : false);
+							setPickedOptions((prev: any) => ({
+								...prev,
+								backend_language: null,
+								backend_framework: null,
+								backend_addons: [],
+							}));
+						}}
+						className={
+							pickedOptions.frontend_framework &&
+							(pickedOptions.frontend_framework?.framework_name === 'NextJS' ||
+								pickedOptions.frontend_framework?.framework_name === 'NuxtJS')
+								? ''
+								: 'pointer-events-none opacity-25'
+						}
+					>
+						{!forceBackend ? 'Force enable backend' : 'Disable backend force'}
+					</Button>
 				</div>
 				<div
 					className={
@@ -351,11 +502,9 @@ export default function StackPickerComponent() {
 								: null
 						}
 						setPickedOptions={setPickedOptions}
+						currentAddons={pickedOptions.backend_addons}
 					/>
 				</div>
-			</div>
-			<div className='justify-self-center w-fit h-fit ml-auto mr-auto'>
-				<Button onClick={() => router.push('/instructions/123')}>Check your results</Button>
 			</div>
 		</div>
 	);
@@ -434,11 +583,13 @@ function PickFrontendFramework({
 	platform,
 	topic,
 	setPickedOptions,
+	setPreviousFrontendFramework,
 }: {
 	programming_language: string | null;
 	platform: string | null;
 	topic: string | null;
 	setPickedOptions: any;
+	setPreviousFrontendFramework: any;
 }) {
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState('');
@@ -584,13 +735,17 @@ function PickFrontendFramework({
 										value={String(framework.frontend_id)}
 										onSelect={(currentValue) => {
 											//setValue(currentValue === value ? '' : currentValue);
-											setPickedOptions((prev: any) => ({
-												...prev,
-												frontend_framework: {
-													framework_id: framework.frontend_id,
-													framework_name: framework.frontend_name,
-												},
-											}));
+
+											setPickedOptions((prev: any) => {
+												setPreviousFrontendFramework(prev.frontend_framework);
+												return {
+													...prev,
+													frontend_framework: {
+														framework_id: framework.frontend_id,
+														framework_name: framework.frontend_name,
+													},
+												};
+											});
 											setOpen(false);
 										}}
 									>
@@ -615,12 +770,14 @@ function PickFrontendFramework({
 function PickFrontendAddons({
 	pickedFrontendFramework,
 	setPickedOptions,
+	currentAddons,
 }: {
 	pickedFrontendFramework: null | {
 		framework_id: number;
 		framework_name: string;
 	};
 	setPickedOptions: any;
+	currentAddons: any[];
 }) {
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState('');
@@ -632,6 +789,7 @@ function PickFrontendAddons({
 			development_focus: string;
 		}[]
 	>([]);
+	const {toast} = useToast();
 
 	useEffect(() => {
 		const frontendAddons =
@@ -676,19 +834,27 @@ function PickFrontendAddons({
 										value={String(a.addon_id)}
 										onSelect={(currentValue) => {
 											//setValue(currentValue === value ? '' : currentValue);
-											setPickedOptions((prev: any) => ({
-												...prev,
-												frontend_addons: [
-													...prev.frontend_addons,
-													{
-														addon_id: a.addon_id,
-														addon_name: a.addon_name,
-														used_with: a.used_with,
-														development_focus: a.development_focus,
-													},
-												],
-											}));
-											setOpen(false);
+											if (!currentAddons.find((a2) => a2.addon_id === a.addon_id)) {
+												setPickedOptions((prev: any) => ({
+													...prev,
+													frontend_addons: [
+														...prev.frontend_addons,
+														{
+															addon_id: a.addon_id,
+															addon_name: a.addon_name,
+															used_with: a.used_with,
+															development_focus: a.development_focus,
+														},
+													],
+												}));
+												return setOpen(false);
+											}
+
+											return toast({
+												title: 'Error',
+												description: `Addon ${a.addon_name} already on your picks`,
+												variant: 'destructive',
+											});
 										}}
 									>
 										{/*<Check className={cn('mr-2 h-4 w-4', value === String(a.addon_id) ? 'opacity-100' : 'opacity-0')} />*/}
@@ -704,7 +870,15 @@ function PickFrontendAddons({
 	);
 }
 
-function PickDatabases({setPickedOptions, database_types}: {setPickedOptions: any; database_types: any[]}) {
+function PickDatabases({
+	setPickedOptions,
+	database_types,
+	currentDatabases,
+}: {
+	setPickedOptions: any;
+	database_types: any[];
+	currentDatabases: any[];
+}) {
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState('');
 	const [databases, setDatabases] = useState<
@@ -714,11 +888,12 @@ function PickDatabases({setPickedOptions, database_types}: {setPickedOptions: an
 			database_type: string;
 		}[]
 	>([]);
+	const {toast} = useToast();
 
 	//console.log(database_types)
 
 	useEffect(() => {
-		console.log(database_types);
+		//console.log(database_types);
 		if (database_types.length > 0) {
 			const filteredDatabases: any[] = [];
 			//console.log('dbt', database_types);
@@ -748,7 +923,7 @@ function PickDatabases({setPickedOptions, database_types}: {setPickedOptions: an
 		return setDatabases(fakeApi.databases);
 	}, [fakeApi.databases, database_types]);
 
-	console.log(databases);
+	//console.log(databases);
 
 	return (
 		<div className='flex flex-col gap-1'>
@@ -771,19 +946,28 @@ function PickDatabases({setPickedOptions, database_types}: {setPickedOptions: an
 										key={`${db.database_id}-${db.database_name}-${db.database_type}`}
 										value={String(db.database_id)}
 										onSelect={(currentValue) => {
-											//setValue(currentValue === value ? '' : currentValue);
-											setPickedOptions((prev: any) => ({
-												...prev,
-												databases: [
-													...prev.databases,
-													{
-														database_id: db.database_id,
-														database_name: db.database_name,
-														database_type: db.database_type,
-													},
-												],
-											}));
-											setOpen(false);
+											if (!currentDatabases.find((db2: any) => db2.database_id === db.database_id)) {
+												//setValue(currentValue === value ? '' : currentValue);
+												setPickedOptions((prev: any) => {
+													return {
+														...prev,
+														databases: [
+															...prev.databases,
+															{
+																database_id: db.database_id,
+																database_name: db.database_name,
+																database_type: db.database_type,
+															},
+														],
+													};
+												});
+												return setOpen(false);
+											}
+											return toast({
+												title: 'Error',
+												description: `Database ${db.database_name} is already on your list`,
+												variant: 'destructive',
+											});
 										}}
 									>
 										{/*<Check className={cn('mr-2 h-4 w-4', value === String(a.addon_id) ? 'opacity-100' : 'opacity-0')} />*/}
@@ -949,10 +1133,12 @@ function PickBackendAddons({
 	selectedDatabase,
 	selectedBackend,
 	setPickedOptions,
+	currentAddons,
 }: {
 	selectedDatabase: {database_id: number; database_name: string; database_type: string}[];
 	selectedBackend: string | null;
 	setPickedOptions: any;
+	currentAddons: any[];
 }) {
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState('');
@@ -965,6 +1151,7 @@ function PickBackendAddons({
 			needed_with: string;
 		}[]
 	>([]);
+	const {toast} = useToast();
 
 	useEffect(() => {
 		if (selectedDatabase.length > 0 && selectedBackend) {
@@ -1025,21 +1212,28 @@ function PickBackendAddons({
 										key={`${a.addon_id}-backend-addons`}
 										value={String(a.addon_id)}
 										onSelect={(currentValue) => {
-											//setValue(currentValue === value ? '' : currentValue);
-											setPickedOptions((prev: any) => ({
-												...prev,
-												backend_addons: [
-													...prev.backend_addons,
-													{
-														addon_id: a.addon_id,
-														addon_name: a.addon_name,
-														used_with: a.used_with,
-														development_focus: a.development_focus,
-														needed_with: a.used_with,
-													},
-												],
-											}));
-											setOpen(false);
+											if (!currentAddons.find((a2: any) => a2.addon_id === a.addon_id)) {
+												//setValue(currentValue === value ? '' : currentValue);
+												setPickedOptions((prev: any) => ({
+													...prev,
+													backend_addons: [
+														...prev.backend_addons,
+														{
+															addon_id: a.addon_id,
+															addon_name: a.addon_name,
+															used_with: a.used_with,
+															development_focus: a.development_focus,
+															needed_with: a.used_with,
+														},
+													],
+												}));
+												return setOpen(false);
+											}
+											return toast({
+												title: 'Error',
+												description: `Addon ${a.addon_name} is already on your picks`,
+												variant: 'destructive',
+											});
 										}}
 									>
 										{/*<Check className={cn('mr-2 h-4 w-4', value === String(a.addon_id) ? 'opacity-100' : 'opacity-0')} />*/}
