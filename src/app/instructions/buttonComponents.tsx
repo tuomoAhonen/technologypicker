@@ -12,7 +12,9 @@ export default function ButtonComponent() {
 				router.push(
 					`/stackpicker?topic=${searchParams.get('topic')}&platform=${searchParams.get(
 						'platform'
-					)}&database_types=${searchParams.getAll('database_types').join('&database_types=')}`
+					)}&database_types=${searchParams
+						.getAll('database_types')
+						.join('&database_types=')}&picked_options=${searchParams.get('picked_options')}`
 				)
 			}
 		>

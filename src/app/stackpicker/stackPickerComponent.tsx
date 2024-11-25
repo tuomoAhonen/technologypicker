@@ -57,31 +57,6 @@ export default function StackPickerComponent() {
 	const {toast} = useToast();
 
 	useEffect(() => {
-		const topic = searchParams.get('topic');
-		const platform = searchParams.get('platform');
-		//const programming_language = searchParams.get('programming_language');
-		const database_types = searchParams.getAll('database_types');
-		//console.log(topic, platform, programming_language, database_types);
-
-		setFilters({
-			topic: topic !== '-' ? topic : null,
-			platform: platform !== '-' ? platform : null,
-			//programming_language: programming_language !== '-' ? programming_language : null,
-			database_types: database_types.length > 0 && database_types[0] !== '-' ? database_types : [],
-		});
-
-		if (!searchParams.get('refreshed_at')) {
-			toast({
-				title: 'Usage tip number 1.',
-				description:
-					'Hello, it is your favorite wizard here. You can unfilter your answers to questions by clicking the answer you gave at the top of the screen. Also, you can reset your picks by reset-button, which will keep your answer-filters.',
-				variant: 'default',
-				duration: 10000,
-			});
-		}
-	}, [searchParams]);
-
-	useEffect(() => {
 		if (!pickedOptions.frontend_language) {
 			return setPickedOptions({
 				frontend_language: null,
@@ -186,6 +161,37 @@ export default function StackPickerComponent() {
 		}
 	}, [pickedOptions.backend_framework]);
 
+	useEffect(() => {
+		const topic = searchParams.get('topic');
+		const platform = searchParams.get('platform');
+		//const programming_language = searchParams.get('programming_language');
+		const database_types = searchParams.getAll('database_types');
+		const picked_options = searchParams.get('picked_options');
+		//console.log(topic, platform, programming_language, database_types);
+
+		setFilters({
+			topic: topic !== '-' ? topic : null,
+			platform: platform !== '-' ? platform : null,
+			//programming_language: programming_language !== '-' ? programming_language : null,
+			database_types: database_types.length > 0 && database_types[0] !== '-' ? database_types : [],
+		});
+
+		if (picked_options !== null /* && picked_options !== JSON.stringify(pickedOptionsInitializer)*/) {
+			//console.log(JSON.parse(picked_options));
+			setPickedOptions(JSON.parse(picked_options));
+		}
+
+		if (!searchParams.get('refreshed_at')) {
+			toast({
+				title: 'Usage tip number 1.',
+				description:
+					'Hello, it is your favorite wizard here. You can unfilter your answers to questions by clicking the answer you gave at the top of the screen. Also, you can reset your picks by reset-button, which will keep your answer-filters. Everytime, you go backwards on picker or remove something, it will also autoclean picks from beyond that point.',
+				variant: 'default',
+				duration: 10000,
+			});
+		}
+	}, [searchParams]);
+
 	const stackAnswers = () => {
 		return (
 			<div className='flex flex-row justify-start items-center gap-1 bg-black rounded shadow text-white p-1 h-fit w-full'>
@@ -267,42 +273,7 @@ export default function StackPickerComponent() {
 		//return answers.map((a: any) => a).join(', ');
 	};
 
-	//console.log(filters);
-	//console.log(pickedOptions.databases);
-	//console.log(pickedOptions.backend_language);
-	//console.log(pickedOptions.frontend_language);
-	/* <div
-					className={
-						!showAllPicks
-							? 'flex flex-row gap-1 justify-start items-center text-center flex-wrap w-full p-1 overflow-hidden h-12'
-							: 'flex flex-row gap-1 justify-start items-center text-center flex-wrap w-full p-1 overflow-visible h-fit'
-					}
-				>
-
-					</div>
-				<Button
-					onClick={() =>
-						setShowAllPicks(
-							!showAllPicks &&
-								JSON.stringify(pickedOptions) !==
-									JSON.stringify({
-										frontend_language: null,
-										frontend_framework: null,
-										frontend_addons: [],
-										databases: [],
-										backend_language: null,
-										backend_framework: null,
-										backend_addons: [],
-									})
-								? true
-								: false
-						)
-					}
-					className='w-24 justify-self-end mt-2'
-				>
-					{!showAllPicks ? 'Show all' : 'Hide all'}
-				</Button>
-	*/
+	//console.log(pickedOptions);
 
 	return (
 		<div className='w-full flex flex-col gap-1'>
@@ -312,13 +283,19 @@ export default function StackPickerComponent() {
 					onClick={() => {
 						//console.log('hello');
 						setPickedOptions(pickedOptionsInitializer);
-						return router.push(
+						router.push(
 							`/stackpicker?topic=${searchParams.get('topic')}&platform=${searchParams.get(
 								'platform'
 							)}&database_types=${searchParams
 								.getAll('database_types')
 								.join('&database_types=')}&refreshed_at=${new Date().toLocaleString()}`
 						);
+						return toast({
+							title: 'Reset',
+							description: 'Reset just happened, wow.',
+							variant: 'default',
+							duration: 5000,
+						});
 					}}
 				>
 					Reset picks
@@ -344,7 +321,9 @@ export default function StackPickerComponent() {
 									: '-'
 							}&topic=${searchParams.get('topic')}&platform=${searchParams.get(
 								'platform'
-							)}&database_types=${searchParams.getAll('database_types').join('&database_types=')}`
+							)}&database_types=${searchParams
+								.getAll('database_types')
+								.join('&database_types=')}&picked_options=${JSON.stringify(pickedOptions)}`
 						)
 					}
 				>
@@ -836,8 +815,15 @@ function PickFrontendFramework({
 
 											if (framework.frontend_name === 'NextJS' || framework.frontend_name === 'NextJS') {
 												toast({
-													title: 'Frontend framework tip',
-													description: `By default, you will not need extra backend with ${framework.frontend_name}, but you can enable it with the force-button within backend section.`,
+													title: `${framework.frontend_name} and database tip`,
+													description: `You may pick addons for your frontend framework and you may pick fitting database for your project. By default, you will not need extra backend with ${framework.frontend_name}, but you can enable it with the force-button within backend section. If you change frontend framework away from NextJS or Nuxt and pick something instead of those two, it will cause reset to addons and other options.`,
+													variant: 'default',
+													duration: 10000,
+												});
+											} else {
+												toast({
+													title: 'Frontend framework and database tip',
+													description: `You may pick addons for your frontend framework and you may pick fitting database for your project. If you change frontend framework to NextJS or Nuxt and pick something for those, it will cause reset to addons and other options.`,
 													variant: 'default',
 													duration: 10000,
 												});
@@ -944,6 +930,11 @@ function PickFrontendAddons({
 														},
 													],
 												}));
+												toast({
+													title: 'Database tip',
+													description:
+														'If you change framework to other, it will not remove the database. Only removing the framework from picks will reset picks beyond that point.',
+												});
 												return setOpen(false);
 											}
 
@@ -1160,6 +1151,8 @@ function PickBackendFramework({
 		}[]
 	>([]);
 
+	const {toast} = useToast();
+
 	useEffect(() => {
 		if (selectedBackendLanguage) {
 			return setFrameworks(
@@ -1207,6 +1200,12 @@ function PickBackendFramework({
 													learning_curve: framework.learning_curve,
 												},
 											}));
+											toast({
+												title: 'Backend framework tip',
+												description: 'You may pick addons for your backend framework.',
+												variant: 'default',
+												duration: 10000,
+											});
 											setOpen(false);
 										}}
 									>
