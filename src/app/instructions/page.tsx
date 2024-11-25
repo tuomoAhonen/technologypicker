@@ -1,18 +1,18 @@
 import fakeApiInstructions from '@/components/fakeapi/instructions.json';
-import ButtonComponent from '../buttonComponents';
+import ButtonComponent from './buttonComponents';
 //import { useSearchParams } from 'next/navigation';
 
-export default function InstructionsPage({params}: {params: {stack_id: string}}) {
+// if there was db. searchparams would be used to fetch data for instructions
+export default function InstructionsPage() {
 	//const searchParams = useSearchParams();
-	//const frontendAddons = searchParams.get('frontend_addons');
-
-	const instructions = fakeApiInstructions.instructions.find(
-		(instruction) => instruction.instructions_id === parseInt(params.stack_id)
-	);
+	const instructions = fakeApiInstructions.instructions.find((instruction: any) => instruction.instructions_id === 123);
 
 	if (!instructions) {
 		return (
-			<div className='w-full h-full flex flex-col text-center content-center items-center'>Instructions not found</div>
+			<div className='flex flex-col gap-5 p-5 w-full h-full'>
+				<ButtonComponent />
+				<div>Instructions were not found for your stack</div>
+			</div>
 		);
 	}
 

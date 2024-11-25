@@ -15,8 +15,26 @@ import fakeApiBackendAddons from '@/components/fakeApi/backend_addons.json';
 import {useToast} from '@/hooks/use-toast';
 import ButtonComponent from './buttonComponent';
 
+const pickedOptionsInitializer: {
+	frontend_language: null | object;
+	frontend_framework: null | object;
+	frontend_addons: any[];
+	databases: any[];
+	backend_language: null | object;
+	backend_framework: null | object;
+	backend_addons: any[];
+} = {
+	frontend_language: null,
+	frontend_framework: null,
+	frontend_addons: [],
+	databases: [],
+	backend_language: null,
+	backend_framework: null,
+	backend_addons: [],
+};
+
 export default function StackPickerComponent() {
-	const [showAllPicks, setShowAllPicks] = useState<boolean>(false);
+	//const [showAllPicks, setShowAllPicks] = useState<boolean>(false);
 	const [forceBackend, setForceBackend] = useState<boolean>(false);
 	const [filters, setFilters] = useState<any>({
 		topic: null,
@@ -36,6 +54,7 @@ export default function StackPickerComponent() {
 	const [previousFrontendFramework, setPreviousFrontendFramework] = useState<any>(null);
 	const searchParams = useSearchParams();
 	const router = useRouter();
+	const {toast} = useToast();
 
 	useEffect(() => {
 		const topic = searchParams.get('topic');
@@ -50,6 +69,16 @@ export default function StackPickerComponent() {
 			//programming_language: programming_language !== '-' ? programming_language : null,
 			database_types: database_types.length > 0 && database_types[0] !== '-' ? database_types : [],
 		});
+
+		if (!searchParams.get('refreshed_at')) {
+			toast({
+				title: 'Usage tip number 1.',
+				description:
+					'Hello, it is your favorite wizard here. You can unfilter your answers to questions by clicking the answer you gave at the top of the screen. Also, you can reset your picks by reset-button, which will keep your answer-filters.',
+				variant: 'default',
+				duration: 10000,
+			});
+		}
 	}, [searchParams]);
 
 	useEffect(() => {
@@ -159,31 +188,32 @@ export default function StackPickerComponent() {
 
 	const stackAnswers = () => {
 		return (
-			<div className='w-full flex flex-row gap-1 justify-start items-center content-center text-center flex-wrap bg-black rounded shadow text-white p-1 h-fit'>
-				<div>Answers as filters:</div>
-				{filters.topic ? (
-					<div
-						onClick={() => setFilters((prev: any) => ({...prev, topic: null}))}
-						className='flex flex-row gap-1 border rounded w-fit p-1'
-					>
-						<div>{`1. Topic: ${filters.topic}`}</div>
-						<SquareXIcon />
-					</div>
-				) : (
-					<div className='flex flex-row gap-1 border rounded w-fit p-1'>{`1. Topic - `}</div>
-				)}
-				{filters.platform ? (
-					<div
-						onClick={() => setFilters((prev: any) => ({...prev, platform: null}))}
-						className='flex flex-row gap-1 border rounded w-fit p-1'
-					>
-						<div>{`2. Target platform: ${filters.platform}`}</div>
-						<SquareXIcon />
-					</div>
-				) : (
-					<div className='flex flex-row gap-1 border rounded w-fit p-1'>{`2. Target platform - `}</div>
-				)}
-				{/*filters.programming_language ? (
+			<div className='flex flex-row justify-start items-center gap-1 bg-black rounded shadow text-white p-1 h-fit w-full'>
+				<div className='w-fit flex flex-row gap-1 justify-start items-center flex-wrap'>
+					<div>Answers as filters:</div>
+					{filters.topic ? (
+						<div
+							onClick={() => setFilters((prev: any) => ({...prev, topic: null}))}
+							className='flex flex-row gap-1 border rounded w-fit p-1'
+						>
+							<div>{`1. Topic: ${filters.topic}`}</div>
+							<SquareXIcon />
+						</div>
+					) : (
+						<div className='flex flex-row gap-1 border rounded w-fit p-1'>{`1. Topic - `}</div>
+					)}
+					{filters.platform ? (
+						<div
+							onClick={() => setFilters((prev: any) => ({...prev, platform: null}))}
+							className='flex flex-row gap-1 border rounded w-fit p-1'
+						>
+							<div>{`2. Target platform: ${filters.platform}`}</div>
+							<SquareXIcon />
+						</div>
+					) : (
+						<div className='flex flex-row gap-1 border rounded w-fit p-1'>{`2. Target platform - `}</div>
+					)}
+					{/*filters.programming_language ? (
 					<div
 						onClick={() => setFilters((prev: any) => ({...prev, programming_language: null}))}
 						className='flex flex-row gap-1 border rounded w-fit p-1'
@@ -194,28 +224,44 @@ export default function StackPickerComponent() {
 				) : (
 					<div className='flex flex-row gap-1 border rounded w-fit p-1'>{`3. Frontend language - `}</div>
 				)*/}
-				{filters.database_types.length > 0 ? (
-					<div className='flex flex-row gap-1 border rounded w-fit p-1 text-center'>
-						<div className='text-center content-center'>{`3. Database type options:`}</div>
-						{filters.database_types.map((dbtype_name: string, index: number) => (
-							<div
-								key={`${index}-${dbtype_name}`}
-								onClick={() =>
-									setFilters((prev: any) => ({
-										...prev,
-										database_types: prev.database_types.filter((dbt_name: string) => dbt_name !== dbtype_name),
-									}))
-								}
-								className='flex flex-row gap-1 border rounded w-fit p-1'
-							>
-								<div>{dbtype_name}</div>
-								<SquareXIcon />
-							</div>
-						))}
-					</div>
-				) : (
-					<div className='flex flex-row gap-1 border rounded w-fit p-1'>{`3. Database type options: - `}</div>
-				)}
+					{filters.database_types.length > 0 ? (
+						<div className='flex flex-row gap-1 border rounded w-fit p-1 text-center'>
+							<div className='text-center content-center'>{`3. Database type options:`}</div>
+							{filters.database_types.map((dbtype_name: string, index: number) => (
+								<div
+									key={`${index}-${dbtype_name}`}
+									onClick={() =>
+										setFilters((prev: any) => ({
+											...prev,
+											database_types: prev.database_types.filter((dbt_name: string) => dbt_name !== dbtype_name),
+										}))
+									}
+									className='flex flex-row gap-1 border rounded w-fit p-1'
+								>
+									<div>{dbtype_name}</div>
+									<SquareXIcon />
+								</div>
+							))}
+						</div>
+					) : (
+						<div className='flex flex-row gap-1 border rounded w-fit p-1'>{`3. Database type options: - `}</div>
+					)}
+				</div>
+				<div className='w-fit justify-self-end ml-auto'>
+					<Button
+						onClick={() => {
+							return router.push(
+								`/stackpicker?topic=${searchParams.get('topic')}&platform=${searchParams.get(
+									'platform'
+								)}&database_types=${searchParams
+									.getAll('database_types')
+									.join('&database_types=')}&refreshed_at=${new Date().toLocaleString()}`
+							);
+						}}
+					>
+						Reset filters
+					</Button>
+				</div>
 			</div>
 		);
 		//return answers.map((a: any) => a).join(', ');
@@ -262,10 +308,51 @@ export default function StackPickerComponent() {
 		<div className='w-full flex flex-col gap-1'>
 			<div className='flex flex-row gap-5 justify-self-end w-fit h-fit ml-auto'>
 				<ButtonComponent />
-				<Button onClick={() => router.push('/instructions/123')}>Check your results</Button>
+				<Button
+					onClick={() => {
+						//console.log('hello');
+						setPickedOptions(pickedOptionsInitializer);
+						return router.push(
+							`/stackpicker?topic=${searchParams.get('topic')}&platform=${searchParams.get(
+								'platform'
+							)}&database_types=${searchParams
+								.getAll('database_types')
+								.join('&database_types=')}&refreshed_at=${new Date().toLocaleString()}`
+						);
+					}}
+				>
+					Reset picks
+				</Button>
+				<Button
+					onClick={() =>
+						router.push(
+							`/instructions?frontend_framework=${
+								pickedOptions.frontend_framework ? pickedOptions.frontend_framework.framework_id : '-'
+							}&frontend_addons=${
+								pickedOptions.frontend_addons.length
+									? pickedOptions.frontend_addons.map((a: any) => a.addon_id).join(',')
+									: '-'
+							}&databases=${
+								pickedOptions.databases.length > 0
+									? pickedOptions.databases.map((db: any) => db.database_id).join(',')
+									: '-'
+							}&backend_framework=${
+								pickedOptions.backend_framework ? pickedOptions.backend_framework.backend_id : '-'
+							}&backend_addons=${
+								pickedOptions.backend_addons.length > 0
+									? pickedOptions.backend_addons.map((a: any) => a.addon_id).join(',')
+									: '-'
+							}&topic=${searchParams.get('topic')}&platform=${searchParams.get(
+								'platform'
+							)}&database_types=${searchParams.getAll('database_types').join('&database_types=')}`
+						)
+					}
+				>
+					Check your results
+				</Button>
 			</div>
 			{stackAnswers()}
-			<div className='w-full flex flex-row gap-1 justify-start items-center text-center flex-wrap bg-black rounded shadow text-white p-1 h-fit'>
+			<div className='w-full flex flex-row gap-1 justify-start items-center flex-wrap bg-black rounded shadow text-center text-white font-normal p-1 h-fit'>
 				<div>Picked stack options:</div>
 				{pickedOptions.frontend_language && pickedOptions.frontend_language.programming_language_name ? (
 					<div
@@ -364,7 +451,7 @@ export default function StackPickerComponent() {
 					</div>
 				) : null}
 			</div>
-			<div className='flex flex-row gap-5 flex-wrap bg-black rounded shadow text-white p-1'>
+			<div className='flex flex-col gap-5 flex-wrap bg-black rounded shadow text-white p-1 w-full'>
 				<PickFrontendLanguage setPickedOptions={setPickedOptions} />
 				<div
 					className={
@@ -457,8 +544,8 @@ export default function StackPickerComponent() {
 							pickedOptions.frontend_framework &&
 							(pickedOptions.frontend_framework?.framework_name === 'NextJS' ||
 								pickedOptions.frontend_framework?.framework_name === 'NuxtJS')
-								? ''
-								: 'pointer-events-none opacity-25'
+								? 'w-fit'
+								: 'pointer-events-none opacity-25 w-fit'
 						}
 					>
 						{!forceBackend ? 'Force enable backend' : 'Disable backend force'}
@@ -531,14 +618,14 @@ function PickFrontendLanguage({setPickedOptions}: {setPickedOptions: any}) {
 			<div>1st. Pick programming language for frontend framework</div>
 			<Popover open={open} onOpenChange={setOpen}>
 				<PopoverTrigger asChild>
-					<Button variant='outline' role='combobox' aria-expanded={open} className='w-fit justify-between text-black'>
+					<Button variant='outline' role='combobox' aria-expanded={open} className='w-full justify-between text-black'>
 						{value
 							? languages.find((l) => String(l.programming_language_id) === value)?.programming_language_name
 							: 'Select programming language'}
 						<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent className='w-fit p-0'>
+				<PopoverContent className='w-[--radix-popover-trigger-width] p-0'>
 					<Command>
 						<CommandInput placeholder='Search programming language...' />
 						<CommandList>
@@ -601,6 +688,7 @@ function PickFrontendFramework({
 			platforms: string[];
 		}[]
 	>([]);
+	const {toast} = useToast();
 
 	useEffect(() => {
 		let filteredList: {
@@ -716,14 +804,14 @@ function PickFrontendFramework({
 			<div>2nd. Pick frontend framework</div>
 			<Popover open={open} onOpenChange={setOpen}>
 				<PopoverTrigger asChild>
-					<Button variant='outline' role='combobox' aria-expanded={open} className='w-fit justify-between text-black'>
+					<Button variant='outline' role='combobox' aria-expanded={open} className='w-full justify-between text-black'>
 						{value
 							? frameworks.find((framework) => String(framework.frontend_id) === value)?.frontend_name
 							: 'Select framework'}
 						<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent className='w-fit p-0'>
+				<PopoverContent className='w-[--radix-popover-trigger-width] p-0'>
 					<Command>
 						<CommandInput placeholder='Search framework...' />
 						<CommandList>
@@ -735,7 +823,6 @@ function PickFrontendFramework({
 										value={String(framework.frontend_id)}
 										onSelect={(currentValue) => {
 											//setValue(currentValue === value ? '' : currentValue);
-
 											setPickedOptions((prev: any) => {
 												setPreviousFrontendFramework(prev.frontend_framework);
 												return {
@@ -746,7 +833,17 @@ function PickFrontendFramework({
 													},
 												};
 											});
-											setOpen(false);
+
+											if (framework.frontend_name === 'NextJS' || framework.frontend_name === 'NextJS') {
+												toast({
+													title: 'Frontend framework tip',
+													description: `By default, you will not need extra backend with ${framework.frontend_name}, but you can enable it with the force-button within backend section.`,
+													variant: 'default',
+													duration: 10000,
+												});
+											}
+
+											return setOpen(false);
 										}}
 									>
 										{/*<Check
@@ -817,12 +914,12 @@ function PickFrontendAddons({
 			<div>3rd. Pick frontend addons</div>
 			<Popover open={open} onOpenChange={setOpen}>
 				<PopoverTrigger asChild>
-					<Button variant='outline' role='combobox' aria-expanded={open} className='w-fit justify-between text-black'>
+					<Button variant='outline' role='combobox' aria-expanded={open} className='w-full justify-between text-black'>
 						{value ? addons.find((a) => String(a.addon_id) === value)?.addon_name : 'Select addon'}
 						<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent className='w-fit p-0'>
+				<PopoverContent className='w-[--radix-popover-trigger-width] p-0'>
 					<Command>
 						<CommandInput placeholder='Search addon...' />
 						<CommandList>
@@ -854,6 +951,7 @@ function PickFrontendAddons({
 												title: 'Error',
 												description: `Addon ${a.addon_name} already on your picks`,
 												variant: 'destructive',
+												duration: 5000,
 											});
 										}}
 									>
@@ -930,12 +1028,12 @@ function PickDatabases({
 			<div>4th. Pick databases, that will fit your project</div>
 			<Popover open={open} onOpenChange={setOpen}>
 				<PopoverTrigger asChild>
-					<Button variant='outline' role='combobox' aria-expanded={open} className='w-fit justify-between text-black'>
+					<Button variant='outline' role='combobox' aria-expanded={open} className='w-full justify-between text-black'>
 						{value ? databases.find((db) => String(db.database_id) === value)?.database_name : 'Select database'}
 						<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent className='w-fit p-0'>
+				<PopoverContent className='w-[--radix-popover-trigger-width] p-0'>
 					<Command>
 						<CommandInput placeholder='Search database...' />
 						<CommandList>
@@ -967,6 +1065,7 @@ function PickDatabases({
 												title: 'Error',
 												description: `Database ${db.database_name} is already on your list`,
 												variant: 'destructive',
+												duration: 5000,
 											});
 										}}
 									>
@@ -1000,14 +1099,14 @@ function PickBackendLanguage({setPickedOptions}: {setPickedOptions: any}) {
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>
-				<Button variant='outline' role='combobox' aria-expanded={open} className='w-fit justify-between text-black'>
+				<Button variant='outline' role='combobox' aria-expanded={open} className='w-full justify-between text-black'>
 					{value
 						? languages.find((l) => String(l.programming_language_id) === value)?.programming_language_name
 						: 'Select programming language'}
 					<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
 				</Button>
 			</PopoverTrigger>
-			<PopoverContent className='w-fit p-0'>
+			<PopoverContent className='w-[--radix-popover-trigger-width] p-0'>
 				<Command>
 					<CommandInput placeholder='Search programming language...' />
 					<CommandList>
@@ -1078,14 +1177,14 @@ function PickBackendFramework({
 			<div>6th. Pick backend framework</div>
 			<Popover open={open} onOpenChange={setOpen}>
 				<PopoverTrigger asChild>
-					<Button variant='outline' role='combobox' aria-expanded={open} className='w-fit justify-between text-black'>
+					<Button variant='outline' role='combobox' aria-expanded={open} className='w-full justify-between text-black'>
 						{value
 							? frameworks.find((framework) => String(framework.backend_id) === value)?.backend_name
 							: 'Select framework...'}
 						<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent className='w-fit p-0'>
+				<PopoverContent className='w-[--radix-popover-trigger-width] p-0'>
 					<Command>
 						<CommandInput placeholder='Search framework...' />
 						<CommandList>
@@ -1196,12 +1295,12 @@ function PickBackendAddons({
 			<div>7th. Pick backend addons</div>
 			<Popover open={open} onOpenChange={setOpen}>
 				<PopoverTrigger asChild>
-					<Button variant='outline' role='combobox' aria-expanded={open} className='w-fit justify-between text-black'>
+					<Button variant='outline' role='combobox' aria-expanded={open} className='w-full justify-between text-black'>
 						{value ? addons.find((a) => String(a.addon_id) === value)?.addon_name : 'Select addon'}
 						<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent className='w-fit p-0'>
+				<PopoverContent className='w-[--radix-popover-trigger-width] p-0'>
 					<Command>
 						<CommandInput placeholder='Search addon...' />
 						<CommandList>
@@ -1233,6 +1332,7 @@ function PickBackendAddons({
 												title: 'Error',
 												description: `Addon ${a.addon_name} is already on your picks`,
 												variant: 'destructive',
+												duration: 5000,
 											});
 										}}
 									>

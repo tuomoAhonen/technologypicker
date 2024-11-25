@@ -1,9 +1,22 @@
 'use client';
 
 import {Button} from '@/components/ui/button';
-import {useRouter} from 'next/navigation';
+import {useRouter, useSearchParams} from 'next/navigation';
 
 export default function ButtonComponent() {
 	const router = useRouter();
-	return <Button onClick={() => router.push('/stackpicker')}>Back to stackpicker</Button>;
+	const searchParams = useSearchParams();
+	return (
+		<Button
+			onClick={() =>
+				router.push(
+					`/stackpicker?topic=${searchParams.get('topic')}&platform=${searchParams.get(
+						'platform'
+					)}&database_types=${searchParams.getAll('database_types').join('&database_types=')}`
+				)
+			}
+		>
+			Back to stackpicker
+		</Button>
+	);
 }

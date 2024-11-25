@@ -136,7 +136,7 @@ export default function Questions() {
 	const [questionCount, setQuestionCount] = useState<number>(3);
 	const [user, setUser] = useState({user_id: null, user_email: null, username: null});
 	const [currentAnswers, setCurrentAnswers] = useState<any>('');
-	const route = useRouter();
+	const router = useRouter();
 
 	const returnToBeginning = () => {
 		stackReducerDispatcher({payload: null, type: 'resetStack'});
@@ -282,7 +282,7 @@ export default function Questions() {
 								<AlertDialogAction asChild>
 									<Button
 										onClick={() =>
-											route.push(
+											router.push(
 												`/stackpicker/?topic=${
 													stackReducerValue.topic.topic_name ? stackReducerValue.topic.topic_name : '-'
 												}&platform=${
@@ -309,7 +309,7 @@ export default function Questions() {
 						</AlertDialogContent>
 					</AlertDialog>
 				)}
-				<Button onClick={() => route.push('/stackpicker')}>Skip this, I am pro</Button>
+				<Button onClick={() => router.push('/stackpicker')}>Skip this, I am pro</Button>
 				<Login user={user} setUser={setUser} />
 			</div>
 			<div className='flex flex-col gap-1'>
