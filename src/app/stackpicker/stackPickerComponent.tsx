@@ -9,10 +9,10 @@ import {Check, ChevronsUpDown} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList} from '@/components/ui/command';
 import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover';
-
-import fakeApi from '@/components/fakeapi/options_for_stackpicker_v2.json';
-import fakeApiBackendAddons from '@/components/fakeApi/backend_addons.json';
 import {useToast} from '@/hooks/use-toast';
+
+import fakeApi from '../../components/fakeapi/options_for_stackpicker_v2.json'; //@/components/fakeapi/options_for_stackpicker_v2.json
+import fakeApiBackendAddons from '../../components/fakeApi/backend_addons.json'; //@/components/fakeApi/backend_addons.json
 import ButtonComponent from './buttonComponent';
 
 const pickedOptionsInitializer: {

@@ -1,4 +1,4 @@
-import fakeApiInstructions from '@/components/fakeapi/instructions.json';
+import fakeApiInstructions from '../../components/fakeapi/instructions.json'; //@/components/fakeapi/instructions.json
 import ButtonComponent from './buttonComponents';
 //import { useSearchParams } from 'next/navigation';
 
