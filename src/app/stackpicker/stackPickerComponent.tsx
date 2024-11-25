@@ -169,11 +169,14 @@ export default function StackPickerComponent() {
 		const picked_options = searchParams.get('picked_options');
 		//console.log(topic, platform, programming_language, database_types);
 
+		console.log(database_types[0] === '');
+
 		setFilters({
-			topic: topic !== '-' ? topic : null,
-			platform: platform !== '-' ? platform : null,
+			topic: topic !== '-' && topic !== 'null' ? topic : null,
+			platform: platform !== '-' && platform !== 'null' ? platform : null,
 			//programming_language: programming_language !== '-' ? programming_language : null,
-			database_types: database_types.length > 0 && database_types[0] !== '-' ? database_types : [],
+			database_types:
+				database_types.length > 0 && database_types[0] !== '-' && database_types[0] !== '' ? database_types : [],
 		});
 
 		if (picked_options !== null /* && picked_options !== JSON.stringify(pickedOptionsInitializer)*/) {
