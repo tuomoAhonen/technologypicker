@@ -1,16 +1,21 @@
-import fakeApiInstructions from '@/components/fakeapi/instructions.json'; //@/components/fakeapi/instructions.json
+//import fakeApiInstructions from '@/components/fakeapi/instructions.json'; //@/components/fakeapi/instructions.json
 import ButtonComponent from './buttonComponents';
+import {readFile} from '../actions';
+import {Suspense} from 'react';
 //import { useSearchParams } from 'next/navigation';
 
 // if there was db. searchparams would be used to fetch data for instructions
-export default function InstructionsPage() {
+export default async function InstructionsPage() {
 	//const searchParams = useSearchParams();
-	const instructions = fakeApiInstructions.instructions.find((instruction: any) => instruction.instructions_id === 123);
+	//const instructions = fakeApiInstructions.instructions.find((instruction: any) => instruction.instructions_id === 123);
+	const instructions = await readFile(process.cwd() + 'src/components/fakeapi/instructions.json');
 
 	if (!instructions) {
 		return (
 			<div className='flex flex-col gap-5 p-5 w-full h-full'>
-				<ButtonComponent />
+				<Suspense>
+					<ButtonComponent />
+				</Suspense>
 				<div>Instructions were not found for your stack</div>
 			</div>
 		);
@@ -20,7 +25,9 @@ export default function InstructionsPage() {
 		<div className='flex flex-col gap-5 p-5'>
 			<div className='flex flex-row gap-5 justify-between content-center items-center flex-wrap'>
 				<div className='text-lg font-bold'>Your stack results</div>
-				<ButtonComponent />
+				<Suspense>
+					<ButtonComponent />
+				</Suspense>
 			</div>
 			<div className='flex flex-col gap-1'>
 				<div className='font-bold'>Frontend framework:</div>
@@ -31,11 +38,11 @@ export default function InstructionsPage() {
 				<div>{instructions.techstack.frontend_framework.development_level}</div>
 				<div className='flex flex-col gap-1'>
 					{instructions.techstack.frontend_framework.development_description.length > 0
-						? instructions.techstack.frontend_framework.development_description.map((d, i) => (
+						? instructions.techstack.frontend_framework.development_description.map((d: any, i: number) => (
 								<div key={i}>
 									<div className='font-bold'>{d.topic}</div>
 									<div>
-										{d.text.map((t, i2) => (
+										{d.text.map((t: any, i2: number) => (
 											<div key={i2}>{t}</div>
 										))}
 									</div>
@@ -59,7 +66,7 @@ export default function InstructionsPage() {
 			<div className='flex flex-col gap-1'>
 				<div className='font-bold'>Frontend addons:</div>
 				{instructions.techstack.frontend_addons.length > 0
-					? instructions.techstack.frontend_addons.map((a, i) => (
+					? instructions.techstack.frontend_addons.map((a: any, i: number) => (
 							<div key={i}>
 								<div></div>
 								<div className='font-bold'>{a.addon_name}</div>
@@ -81,7 +88,7 @@ export default function InstructionsPage() {
 			</div>
 			<div className='flex flex-col gap-1'>
 				{instructions.techstack.databases.length > 0
-					? instructions.techstack.databases.map((db, i) => (
+					? instructions.techstack.databases.map((db: any, i: number) => (
 							<div key={i}>
 								<div className='font-bold'>Database:</div>
 								<div>{db.database_name}</div>
@@ -89,11 +96,11 @@ export default function InstructionsPage() {
 								<div>{db.development_level}</div>
 								<div className='flex flex-col gap-1'>
 									{db.development_description.length > 0
-										? db.development_description.map((d, i2) => (
+										? db.development_description.map((d: any, i2: number) => (
 												<div key={i2}>
 													<div className='font-bold'>{d.topic}</div>
 													<div>
-														{d.text.map((t, i3) => (
+														{d.text.map((t: any, i3: number) => (
 															<div key={i3}>{t}</div>
 														))}
 													</div>
