@@ -357,7 +357,7 @@ export default function Questions() {
 }
 
 // this works, but it uses user's device to render, so it will be heavy on use, not sure if it is worth it
-function TextToWrittenLetterByLetter({text}: {text: string}) {
+/*function TextToWrittenLetterByLetter({text}: {text: string}) {
 	const [message, setMessage] = useState<string>('');
 	const [shownMessage, setShowMessage] = useState<string>('');
 
@@ -379,7 +379,7 @@ function TextToWrittenLetterByLetter({text}: {text: string}) {
 	}, []);
 
 	return <div className='w-full h-min-8'>{shownMessage}</div>;
-}
+}*/
 
 function Login({user, setUser}: {user: {user_id: any; user_email: any; username: any}; setUser: any}) {
 	const [username, setUsername] = useState('');
