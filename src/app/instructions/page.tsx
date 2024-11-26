@@ -8,7 +8,7 @@ import {Suspense} from 'react';
 export default async function InstructionsPage() {
 	//const searchParams = useSearchParams();
 	//const instructions = fakeApiInstructions.instructions.find((instruction: any) => instruction.instructions_id === 123);
-	const data = await readFile('/src/components/fakeapi/instructions.json');
+	const data = await readFile('/src/components/fakeapi/instructions');
 	const instructions = data.instructions.find((instruction: any) => instruction.instructions_id === 123);
 
 	if (!instructions) {
