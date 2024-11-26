@@ -11,8 +11,8 @@ import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandL
 import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover';
 import {useToast} from '@/hooks/use-toast';
 
-import fakeApi from '../../components/fakeapi/options_for_stackpicker_v2.json'; //@/components/fakeapi/options_for_stackpicker_v2.json
-import fakeApiBackendAddons from '../../components/fakeApi/backend_addons.json'; //@/components/fakeApi/backend_addons.json
+//import fakeApi from '@/components/fakeapi/options_for_stackpicker_v2.json';
+//import fakeApiBackendAddons from '@/components/fakeApi/backend_addons.json';
 import ButtonComponent from './buttonComponent';
 
 const pickedOptionsInitializer: {
@@ -33,7 +33,13 @@ const pickedOptionsInitializer: {
 	backend_addons: [],
 };
 
-export default function StackPickerComponent() {
+export default function StackPickerComponent({
+	fakeApi,
+	fakeApiBackendAddons,
+}: {
+	fakeApi: any;
+	fakeApiBackendAddons: any;
+}) {
 	//const [showAllPicks, setShowAllPicks] = useState<boolean>(false);
 	const [forceBackend, setForceBackend] = useState<boolean>(false);
 	const [filters, setFilters] = useState<any>({
@@ -434,7 +440,10 @@ export default function StackPickerComponent() {
 				) : null}
 			</div>
 			<div className='flex flex-col gap-5 flex-wrap bg-black rounded shadow text-white p-1 w-full'>
-				<PickFrontendLanguage setPickedOptions={setPickedOptions} />
+				<PickFrontendLanguage
+					setPickedOptions={setPickedOptions}
+					programming_languages_frontend={fakeApi.programming_languages_frontend}
+				/>
 				<div
 					className={
 						pickedOptions.frontend_language && pickedOptions.frontend_language.programming_language_name
@@ -452,6 +461,7 @@ export default function StackPickerComponent() {
 						platform={filters.platform}
 						topic={filters.topic}
 						setPreviousFrontendFramework={setPreviousFrontendFramework}
+						fakeApiFrontends={fakeApi.frontends}
 					/>
 				</div>
 				<div
@@ -465,6 +475,7 @@ export default function StackPickerComponent() {
 						pickedFrontendFramework={pickedOptions.frontend_framework}
 						setPickedOptions={setPickedOptions}
 						currentAddons={pickedOptions.frontend_addons}
+						fakeApiAddons={fakeApi.addons}
 					/>
 				</div>
 				<div
@@ -480,6 +491,7 @@ export default function StackPickerComponent() {
 						setPickedOptions={setPickedOptions}
 						database_types={filters.database_types}
 						currentDatabases={pickedOptions.databases}
+						fakeApiDatabases={fakeApi.databases}
 					/>
 				</div>
 				<div
@@ -510,7 +522,10 @@ export default function StackPickerComponent() {
 								: 'flex flex-col gap-1 pointer-events-none opacity-25'
 						}
 					>
-						<PickBackendLanguage setPickedOptions={setPickedOptions} />
+						<PickBackendLanguage
+							setPickedOptions={setPickedOptions}
+							languages_backend={fakeApi.programming_languages_backend}
+						/>
 					</div>
 					<Button
 						onClick={() => {
@@ -550,6 +565,7 @@ export default function StackPickerComponent() {
 								? pickedOptions.backend_language.programming_language_name
 								: null
 						}
+						backends={fakeApi.backends}
 					/>
 				</div>
 				<div
@@ -572,6 +588,7 @@ export default function StackPickerComponent() {
 						}
 						setPickedOptions={setPickedOptions}
 						currentAddons={pickedOptions.backend_addons}
+						fakeApiBackendAddons={fakeApiBackendAddons.addons}
 					/>
 				</div>
 			</div>
@@ -579,7 +596,16 @@ export default function StackPickerComponent() {
 	);
 }
 
-function PickFrontendLanguage({setPickedOptions}: {setPickedOptions: any}) {
+function PickFrontendLanguage({
+	setPickedOptions,
+	programming_languages_frontend,
+}: {
+	setPickedOptions: any;
+	programming_languages_frontend: {
+		programming_language_id: number;
+		programming_language_name: string;
+	}[];
+}) {
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState('');
 	const [languages, setLanguages] = useState<
@@ -590,8 +616,8 @@ function PickFrontendLanguage({setPickedOptions}: {setPickedOptions: any}) {
 	>([]);
 
 	useEffect(() => {
-		return setLanguages(fakeApi.programming_languages_frontend);
-	}, [fakeApi.programming_languages_frontend]);
+		return setLanguages(programming_languages_frontend);
+	}, [programming_languages_frontend]);
 
 	//console.log(languages);
 
@@ -653,12 +679,19 @@ function PickFrontendFramework({
 	topic,
 	setPickedOptions,
 	setPreviousFrontendFramework,
+	fakeApiFrontends,
 }: {
 	programming_language: string | null;
 	platform: string | null;
 	topic: string | null;
 	setPickedOptions: any;
 	setPreviousFrontendFramework: any;
+	fakeApiFrontends: {
+		frontend_id: number;
+		frontend_name: string;
+		programming_languages: string[];
+		platforms: string[];
+	}[];
 }) {
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState('');
@@ -678,7 +711,7 @@ function PickFrontendFramework({
 			frontend_name: string;
 			programming_languages: string[];
 			platforms: string[];
-		}[] = fakeApi.frontends;
+		}[] = fakeApiFrontends;
 
 		if (topic) {
 			if (topic === 'Personal portfolio') {
@@ -777,7 +810,7 @@ function PickFrontendFramework({
 		}*/
 
 		//return setFrameworks(fakeApi.frontends);
-	}, [fakeApi.frontends, programming_language, platform, topic]);
+	}, [fakeApiFrontends, programming_language, platform, topic]);
 
 	//console.log(programming_language, platform, frameworks.length);
 
@@ -857,6 +890,7 @@ function PickFrontendAddons({
 	pickedFrontendFramework,
 	setPickedOptions,
 	currentAddons,
+	fakeApiAddons,
 }: {
 	pickedFrontendFramework: null | {
 		framework_id: number;
@@ -864,6 +898,12 @@ function PickFrontendAddons({
 	};
 	setPickedOptions: any;
 	currentAddons: any[];
+	fakeApiAddons: {
+		addon_id: number;
+		addon_name: string;
+		used_with: string[];
+		development_focus: string;
+	}[];
 }) {
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState('');
@@ -879,8 +919,8 @@ function PickFrontendAddons({
 
 	useEffect(() => {
 		const frontendAddons =
-			fakeApi.addons.length > 0
-				? fakeApi.addons.filter((a) => a.development_focus === 'Frontend' || a.development_focus === 'Fullstack')
+			fakeApiAddons.length > 0
+				? fakeApiAddons.filter((a) => a.development_focus === 'Frontend' || a.development_focus === 'Fullstack')
 				: [];
 
 		//console.log(frontendAddons, pickedFrontendFramework);
@@ -896,7 +936,7 @@ function PickFrontendAddons({
 		}
 
 		return setAddons(frontendAddons);
-	}, [fakeApi.addons, pickedFrontendFramework]);
+	}, [fakeApiAddons, pickedFrontendFramework]);
 
 	return (
 		<div className='flex flex-col gap-1'>
@@ -966,10 +1006,16 @@ function PickDatabases({
 	setPickedOptions,
 	database_types,
 	currentDatabases,
+	fakeApiDatabases,
 }: {
 	setPickedOptions: any;
 	database_types: any[];
 	currentDatabases: any[];
+	fakeApiDatabases: {
+		database_id: number;
+		database_name: string;
+		database_type: string;
+	}[];
 }) {
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState('');
@@ -991,29 +1037,29 @@ function PickDatabases({
 			//console.log('dbt', database_types);
 			if (database_types.find((dbt: string) => dbt === 'Database as service')) {
 				//console.log('hallo');
-				filteredDatabases.push(...fakeApi.databases.filter((db) => db.database_type === 'Service'));
+				filteredDatabases.push(...fakeApiDatabases.filter((db) => db.database_type === 'Service'));
 			}
 
 			if (
 				database_types.find((dbt: string) => dbt === 'Database as hosted on cloud' || dbt === 'Database as self hosted')
 			) {
 				filteredDatabases.push(
-					...fakeApi.databases.filter(
+					...fakeApiDatabases.filter(
 						(db) => (db.database_type === 'SQL' && db.database_name !== 'SQLite') || db.database_type === 'NoSQL'
 					)
 				);
 			}
 
 			if (database_types.find((dbt: string) => dbt === 'Database inside the app')) {
-				filteredDatabases.push(fakeApi.databases.find((db) => db.database_name === 'SQLite'));
+				filteredDatabases.push(fakeApiDatabases.find((db) => db.database_name === 'SQLite'));
 			}
 			//console.log('filteredDBS', filteredDatabases);
 
 			return setDatabases(filteredDatabases);
 		}
 
-		return setDatabases(fakeApi.databases);
-	}, [fakeApi.databases, database_types]);
+		return setDatabases(fakeApiDatabases);
+	}, [fakeApiDatabases, database_types]);
 
 	//console.log(databases);
 
@@ -1076,7 +1122,16 @@ function PickDatabases({
 	);
 }
 
-function PickBackendLanguage({setPickedOptions}: {setPickedOptions: any}) {
+function PickBackendLanguage({
+	setPickedOptions,
+	languages_backend,
+}: {
+	setPickedOptions: any;
+	languages_backend: {
+		programming_language_id: number;
+		programming_language_name: string;
+	}[];
+}) {
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState('');
 	const [languages, setLanguages] = useState<
@@ -1087,8 +1142,8 @@ function PickBackendLanguage({setPickedOptions}: {setPickedOptions: any}) {
 	>([]);
 
 	useEffect(() => {
-		return setLanguages(fakeApi.programming_languages_backend);
-	}, [fakeApi.programming_languages_backend]);
+		return setLanguages(languages_backend);
+	}, [languages_backend]);
 
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
@@ -1137,9 +1192,18 @@ function PickBackendLanguage({setPickedOptions}: {setPickedOptions: any}) {
 function PickBackendFramework({
 	selectedBackendLanguage,
 	setPickedOptions,
+	backends,
 }: {
 	selectedBackendLanguage: string | null;
 	setPickedOptions: any;
+	backends: {
+		backend_id: number;
+		backend_name: string;
+		programming_languages: string[];
+		performance_requirements: string;
+		scalability_needs: string;
+		learning_curve: string;
+	}[];
 }) {
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState('');
@@ -1159,12 +1223,12 @@ function PickBackendFramework({
 	useEffect(() => {
 		if (selectedBackendLanguage) {
 			return setFrameworks(
-				fakeApi.backends.filter((b) => b.programming_languages.find((pl) => pl === selectedBackendLanguage))
+				backends.filter((b) => b.programming_languages.find((pl) => pl === selectedBackendLanguage))
 			);
 		}
 
-		return setFrameworks(fakeApi.backends);
-	}, [fakeApi.backends, selectedBackendLanguage]);
+		return setFrameworks(backends);
+	}, [backends, selectedBackendLanguage]);
 
 	//console.log(frameworks);
 
@@ -1235,11 +1299,19 @@ function PickBackendAddons({
 	selectedBackend,
 	setPickedOptions,
 	currentAddons,
+	fakeApiBackendAddons,
 }: {
 	selectedDatabase: {database_id: number; database_name: string; database_type: string}[];
 	selectedBackend: string | null;
 	setPickedOptions: any;
 	currentAddons: any[];
+	fakeApiBackendAddons: {
+		addon_id: number;
+		addon_name: string;
+		used_with: string[];
+		development_focus: string;
+		needed_with: string;
+	}[];
 }) {
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState('');
@@ -1259,10 +1331,10 @@ function PickBackendAddons({
 			//console.log('double');
 			const filteredBackendAddons: any[] = [];
 			filteredBackendAddons.push(
-				...fakeApiBackendAddons.addons.filter((a) => selectedDatabase.find((db) => db.database_name === a.needed_with))
+				...fakeApiBackendAddons.filter((a) => selectedDatabase.find((db) => db.database_name === a.needed_with))
 			);
 			filteredBackendAddons.push(
-				...fakeApiBackendAddons.addons.filter((a) =>
+				...fakeApiBackendAddons.filter((a) =>
 					a.used_with.find(
 						(tech) => tech === selectedBackend && !filteredBackendAddons.find((fa) => fa.addon_id === a.addon_id)
 					)
@@ -1274,21 +1346,21 @@ function PickBackendAddons({
 			//console.log('db');
 			const filteredBackendAddons: any[] = [];
 			filteredBackendAddons.push(
-				...fakeApiBackendAddons.addons.filter((a) => selectedDatabase.find((db) => db.database_name === a.needed_with))
+				...fakeApiBackendAddons.filter((a) => selectedDatabase.find((db) => db.database_name === a.needed_with))
 			);
 			return setAddons(filteredBackendAddons);
 		} else if (selectedBackend) {
 			//console.log('back');
 			const filteredBackendAddons: any[] = [];
 			filteredBackendAddons.push(
-				...fakeApiBackendAddons.addons.filter((a) => a.used_with.find((tech) => tech === selectedBackend))
+				...fakeApiBackendAddons.filter((a) => a.used_with.find((tech) => tech === selectedBackend))
 			);
 			return setAddons(filteredBackendAddons);
 		}
 
 		//console.log(fakeApiBackendAddons);
-		return setAddons(fakeApiBackendAddons.addons);
-	}, [fakeApiBackendAddons.addons, selectedDatabase, selectedBackend]);
+		return setAddons(fakeApiBackendAddons);
+	}, [fakeApiBackendAddons, selectedDatabase, selectedBackend]);
 
 	//console.log('what', selectedDatabase, selectedBackend, addons);
 
