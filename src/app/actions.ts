@@ -2,9 +2,9 @@
 
 import {promises as fs} from 'fs';
 
-export async function readFile(path: any) {
+export async function readFile(path: string) {
 	if (process.env.NODE_ENV === 'production') {
-		const file = await fs.readFile(process.cwd() + '/.next/server' + path, 'utf8');
+		const file = await fs.readFile(process.cwd() + '/.next/server' + path.replace('/src', ''), 'utf8');
 		return JSON.parse(file);
 	}
 
