@@ -7,12 +7,17 @@ import StackPickerComponent from './stackPickerComponent';
 export default async function StackPicker() {
 	const fakeApi = await readFile('/src/components/fakeapi/options_for_stackpicker_v2.json');
 	const fakeApiBackendAddons = await readFile('/src/components/fakeApi/backend_addons.json');
+	const fakeApiFrontendAddons = await readFile('/src/components/fakeApi/frontend_addons.json');
 
 	//console.log(fakeApiBackendAddons);
 
 	return (
 		<div className='flex flex-col gap-5 p-5'>
-			<StackPickerComponent fakeApi={fakeApi} fakeApiBackendAddons={fakeApiBackendAddons} />
+			<StackPickerComponent
+				fakeApi={fakeApi}
+				fakeApiBackendAddons={fakeApiBackendAddons}
+				fakeApiFrontendAddons={fakeApiFrontendAddons}
+			/>
 		</div>
 	);
 }

@@ -1,0 +1,118 @@
+{
+	"addons": [
+		{
+			"addon_id": 0,
+			"addon_name": "Shadcn/ui",
+			"used_with": ["NextJS", "Remix", "React", "ViteJS", "Gatsby", "Expo"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 1,
+			"addon_name": "Storybook",
+			"used_with": ["React", "VueJS", "Angular", "Svelte", "HTML", "NextJS"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 3,
+			"addon_name": "Google API",
+			"used_with": ["React", "NextJS", "NodeJS", "Python", "Java", "Flutter", "Go", "PHP"],
+			"development_focus": "Fullstack"
+		},
+		{
+			"addon_id": 4,
+			"addon_name": "Formik",
+			"used_with": ["React", "NextJS", "Gatsby", "Remix", "React Native"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 5,
+			"addon_name": "Zod",
+			"used_with": ["TypeScript", "NodeJS", "NextJS", "React", "Remix", "NestJS"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 6,
+			"addon_name": "TailwindCSS",
+			"used_with": ["NextJS", "React", "VueJS", "Angular", "Svelte", "Gatsby", "NuxtJS", "Laravel", "Rails"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 7,
+			"addon_name": "Redux",
+			"used_with": ["React", "NextJS", "Gatsby", "React Native", "Remix"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 8,
+			"addon_name": "Context API",
+			"used_with": ["React", "NextJS", "Gatsby", "React Native"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 9,
+			"addon_name": "Zustand",
+			"used_with": ["React", "NextJS", "Gatsby"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 10,
+			"addon_name": "Recoil",
+			"used_with": ["React", "NextJS"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 11,
+			"addon_name": "MobX",
+			"used_with": ["React", "NextJS", "Gatsby", "React Native"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 12,
+			"addon_name": "Pinia",
+			"used_with": ["Vue 3", "NuxtJS"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 13,
+			"addon_name": "Vuex",
+			"used_with": ["Vue 2", "Vue 3", "NuxtJS"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 14,
+			"addon_name": "NgRx",
+			"used_with": ["Angular"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 15,
+			"addon_name": "Apollo Client",
+			"used_with": ["React", "NextJS", "Gatsby", "Vue 3"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 16,
+			"addon_name": "Redux Toolkit",
+			"used_with": ["React", "NextJS", "Gatsby", "React Native"],
+			"development_focus": "Frontend"
+		},
+		{
+			"addon_id": 18,
+			"addon_name": "Stripe",
+			"used_with": ["React", "NextJS", "NodeJS", "Gatsby"],
+			"development_focus": "Fullstack"
+		},
+		{
+			"addon_id": 23,
+			"addon_name": "Supabase Client",
+			"used_with": ["React", "NextJS", "VueJS", "NodeJS"],
+			"development_focus": "Fullstack"
+		},
+		{
+			"addon_id": 32,
+			"addon_name": "Node-postgres",
+			"used_with": ["NodeJS", "NextJS"],
+			"development_focus": "Fullstack"
+		}
+	]
+}

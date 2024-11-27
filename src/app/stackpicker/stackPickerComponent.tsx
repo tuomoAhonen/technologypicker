@@ -36,9 +36,11 @@ const pickedOptionsInitializer: {
 export default function StackPickerComponent({
 	fakeApi,
 	fakeApiBackendAddons,
+	fakeApiFrontendAddons,
 }: {
 	fakeApi: any;
 	fakeApiBackendAddons: any;
+	fakeApiFrontendAddons: any;
 }) {
 	//const [showAllPicks, setShowAllPicks] = useState<boolean>(false);
 	const [forceBackend, setForceBackend] = useState<boolean>(false);
@@ -175,7 +177,7 @@ export default function StackPickerComponent({
 		const picked_options = searchParams.get('picked_options');
 		//console.log(topic, platform, programming_language, database_types);
 
-		console.log(database_types[0] === '');
+		//console.log(database_types[0] === '');
 
 		setFilters({
 			topic: topic !== '-' && topic !== 'null' ? topic : null,
@@ -475,7 +477,7 @@ export default function StackPickerComponent({
 						pickedFrontendFramework={pickedOptions.frontend_framework}
 						setPickedOptions={setPickedOptions}
 						currentAddons={pickedOptions.frontend_addons}
-						fakeApiAddons={fakeApi.addons}
+						fakeApiAddons={fakeApiFrontendAddons.addons}
 					/>
 				</div>
 				<div
@@ -514,7 +516,7 @@ export default function StackPickerComponent({
 							pickedOptions.databases.length > 0 &&
 							pickedOptions.databases.find(
 								(db: any) =>
-									(db.database_type === 'SQL' && db.database_name) !== 'SQLite' || db.database_type === 'NoSQL'
+									(db.database_type === 'SQL' && db.database_name !== 'SQLite') || db.database_type == 'NoSQL'
 							)
 								? 'flex flex-col gap-1'
 								: forceBackend
@@ -918,16 +920,9 @@ function PickFrontendAddons({
 	const {toast} = useToast();
 
 	useEffect(() => {
-		const frontendAddons =
-			fakeApiAddons.length > 0
-				? fakeApiAddons.filter((a) => a.development_focus === 'Frontend' || a.development_focus === 'Fullstack')
-				: [];
-
-		//console.log(frontendAddons, pickedFrontendFramework);
-
-		if (pickedFrontendFramework?.framework_name) {
+		if (pickedFrontendFramework && pickedFrontendFramework?.framework_name) {
 			return setAddons(
-				frontendAddons.filter((a) =>
+				fakeApiAddons.filter((a) =>
 					a.used_with.find(
 						(value: string) => value.toLocaleLowerCase() === pickedFrontendFramework.framework_name.toLocaleLowerCase()
 					)
@@ -935,7 +930,7 @@ function PickFrontendAddons({
 			);
 		}
 
-		return setAddons(frontendAddons);
+		return setAddons(fakeApiAddons);
 	}, [fakeApiAddons, pickedFrontendFramework]);
 
 	return (
